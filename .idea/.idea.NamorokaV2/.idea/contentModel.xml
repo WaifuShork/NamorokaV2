@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\ashle\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\ashle\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_NamorokaV2.1808978697.00" t="ExcludeRecursive" />
-    <e p="G:\source\NamorokaV2\NamorokaV2-master" t="IncludeFlat">
+    <e p="C:\Users\ashle\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_NamorokaV2.-1263614346.00" t="ExcludeRecursive" />
+    <e p="G:\source\NamorokaV2\NamorokaV2" t="IncludeFlat">
       <e p="NamorokaV2" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Commands" t="Include">
