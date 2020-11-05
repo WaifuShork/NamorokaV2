@@ -1,24 +1,23 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Threading.Tasks;
 using Discord.Commands;
 using Discord.WebSocket;
 
 namespace NamorokaV2
 {
-    public class CommandHandler
+    internal class CommandHandler
     {
         private readonly DiscordSocketClient _client;
         private readonly CommandService _commands;
         
-
-        
-        public CommandHandler(DiscordSocketClient client, CommandService commands)
+        internal CommandHandler(DiscordSocketClient client, CommandService commands)
         {
             _commands = commands;
             _client = client;
         }
 
-        public async Task InstallCommandsAsync()
+        internal async Task InstallCommandsAsync()
         {
             _client.MessageReceived += HandleCommandAsync;
 
@@ -27,8 +26,7 @@ namespace NamorokaV2
         
         private async Task HandleCommandAsync(SocketMessage messageParam)
         {
-            JsonService config = new JsonService();
-            ConfigJson configJson = await config.GetConfigJson(JsonService._configJson);
+            ConfigJson configJson = await JsonService.GetConfigJson(JsonService._configJson);
             
             SocketUserMessage message = (SocketUserMessage) messageParam;
             if (message == null) return;

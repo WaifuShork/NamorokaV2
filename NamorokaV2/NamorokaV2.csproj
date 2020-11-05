@@ -9,9 +9,10 @@
       <PackageReference Include="Discord.Addons.Hosting" Version="3.0.0" />
       <PackageReference Include="Discord.Net" Version="2.2.0" />
       <PackageReference Include="libsodium" Version="1.0.18" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0-rc.2.20475.6" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0-rc.2.20475.5" />
       <PackageReference Include="NetEscapades.Configuration.Yaml" Version="2.0.1" />
-      <PackageReference Include="TsSoft.EntityService" Version="1.1.2" />
+      <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
          <!--<PackageReference Include="UmbracoCms.Core" Version="8.9.0" />
          <PackageReference Include="Xabe.FFmpeg" Version="4.3.1" />-->
     </ItemGroup>

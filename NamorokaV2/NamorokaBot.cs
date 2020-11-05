@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
@@ -6,19 +7,18 @@ using Discord.WebSocket;
 
 namespace NamorokaV2
 {
-    public class NamorokaBot
+    internal class NamorokaBot
     {
-        private DiscordSocketClient _client;
-        private CommandService _commands;
-        private readonly JsonService _config = new JsonService();
-        public async Task RunAsync()
+        private readonly DiscordSocketClient _client = new DiscordSocketClient();
+        private readonly CommandService _commands = new CommandService();
+        internal async Task RunAsync()
         {
-            _client = new DiscordSocketClient();
-            _commands = new CommandService();
+            
             LoggingService loggingService = new LoggingService(_client, _commands);
-            Console.WriteLine(loggingService.LogAsync(new LogMessage()));
+            Console.WriteLine(LoggingService.LogAsync(new LogMessage()));
+            Console.WriteLine(loggingService);
  
-            ConfigJson configJson = await _config.GetConfigJson(JsonService._configJson);
+            ConfigJson configJson = await JsonService.GetConfigJson(JsonService._configJson);
             
             await _client.LoginAsync(TokenType.Bot, configJson.Token);
             await _client.StartAsync();

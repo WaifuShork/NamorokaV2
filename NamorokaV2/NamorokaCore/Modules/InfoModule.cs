@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace NamorokaV2
         [Summary("Echoes a message.")]
         public async Task SayAsync([Remainder] [Summary("The text to echo")] string echo)
         {
+            
             switch (echo)
             {
                 case "@everyone":
@@ -31,6 +33,7 @@ namespace NamorokaV2
                     break;
             }
         }
+        
 
         [Command("square")]
         [Summary("Squares a number.")]
@@ -38,6 +41,12 @@ namespace NamorokaV2
         {
             float value = float.Parse(num, CultureInfo.InvariantCulture.NumberFormat);
             await Context.Channel.SendMessageAsync($"{value}^2 = {Math.Pow(value, 2)}");
+        }
+        
+        [Command("f")]
+        public async Task FAsync()
+        {
+            await ReplyAsync("F in chat bois");
         }
 
         [Command("userinfo")]
@@ -74,7 +83,6 @@ namespace NamorokaV2
                 Title = "here's the loaf",
                 ImageUrl = "https://i.imgur.com/cenSuAk.png"
             };
-
             
             Embed embed = builder.Build();
             

@@ -11,7 +11,7 @@ namespace NamorokaV2.Attributes
     {
         private readonly ulong roleId;
 
-        public RequireRoleAttribute(ulong _roleId)
+        internal RequireRoleAttribute(ulong _roleId)
         {
             roleId = _roleId;
         }

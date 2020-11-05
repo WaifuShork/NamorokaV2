@@ -10,7 +10,7 @@ namespace NamorokaV2
         public static string _configJson { get; } = "G:/source/NamorokaV2/NamorokaV2/NamorokaV2/bin/Debug/netcoreapp3.1/configuration/config.json";
         public static string _loggingJson { get; } = "G:/source/NamorokaV2/NamorokaV2/NamorokaV2/bin/Debug/netcoreapp3.1/logs/infractions.json";
         
-        public async Task<ConfigJson> GetConfigJson(string _json)
+        internal static async Task<ConfigJson> GetConfigJson(string _json)
         {
             await using (FileStream fileStream = File.OpenRead(_json))
             using (StreamReader streamReader = new StreamReader(fileStream, new UTF8Encoding(false)))

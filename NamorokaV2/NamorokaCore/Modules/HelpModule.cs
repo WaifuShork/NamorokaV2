@@ -8,8 +8,6 @@ namespace NamorokaV2
     public class HelpModule : ModuleBase<SocketCommandContext>
     {
         private readonly CommandService _service;
-        private readonly JsonService config = new JsonService();
-
         public HelpModule(CommandService service)
         {
             _service = service;
@@ -18,7 +16,7 @@ namespace NamorokaV2
         [Command("help")]
         public async Task HelpAsync()
         {
-            ConfigJson configJson = await config.GetConfigJson(JsonService._configJson);
+            ConfigJson configJson = await JsonService.GetConfigJson(JsonService._configJson);
             string prefix = configJson.Prefix; 
             EmbedBuilder builder = new EmbedBuilder()
             {

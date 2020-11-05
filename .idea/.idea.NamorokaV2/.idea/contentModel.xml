@@ -20,11 +20,13 @@
           </e>
           <e p="Models" t="Include" />
           <e p="Modules" t="Include">
+            <e p="ConfigModule.cs" t="Include" />
             <e p="HelpModule.cs" t="Include" />
             <e p="InfoModule.cs" t="Include" />
             <e p="Moderation" t="Include">
               <e p="Ban.cs" t="Include" />
               <e p="Clear.cs" t="Include" />
+              <e p="InfractionModule.cs" t="Include" />
               <e p="KickModule.cs" t="Include" />
               <e p="Mute.cs" t="Include" />
               <e p="Shutdown.cs" t="Include" />

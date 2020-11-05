@@ -9,13 +9,13 @@ namespace NamorokaV2
 {
     internal class LoggingService
     {
-        public LoggingService(BaseDiscordClient client, CommandService command)
+        internal LoggingService(BaseDiscordClient client, CommandService command)
         {
             client.Log += LogAsync;
             command.Log += LogAsync;
         }
 
-        public async Task LogAsync(LogMessage message)
+        internal static async Task LogAsync(LogMessage message)
         {
             if (message.Exception is CommandException cmdException)
             {

@@ -3,7 +3,4 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
-NamorokaV2/NamorokaCore/Configuration/config.json
 *.json
-/config.json
-Configuration/config.json

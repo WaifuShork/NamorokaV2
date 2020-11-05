@@ -27,34 +27,5 @@ namespace NamorokaV2
             IEnumerable<IMessage> validMessages = messages.Where(m => (DateTimeOffset.Now - m.CreatedAt).Days < 14);
             await ((ITextChannel) Context.Channel).DeleteMessagesAsync(validMessages);
         }
-
-        [Command("clear")]
-        [Summary("Attempt to delete the specified amount of messages by user from the channel.")]
-        [Remarks("clear <user> <count> [history = 100]")]
-        [RequireContext(ContextType.Guild)]
-        [RequireRole(RoleIds.Administrator)]
-        public async Task ClearMessagesAsync(
-            [Summary("The user to clear messages of")] SocketGuildUser user,
-            [Summary("The amount of messages to clear")] int count,
-            [Summary("The history length to delete from")] int history = 100) 
-        {
-            const int maxHistory = 100;
-            if (history > maxHistory) 
-            {
-                history = maxHistory;
-            }
-
-            IEnumerable<IMessage> aMessages = await Context.Channel.GetMessagesAsync(history).FlattenAsync();
-            IEnumerable<IMessage> fMessages = aMessages.Where(m => m.Author.Id == user.Id).Where(m => (DateTimeOffset.Now - m.CreatedAt).Days < 14);
-
-            // ReSharper disable once UseMethodAny.0
-            // ReSharper disable once PossibleMultipleEnumeration
-            if (fMessages.Count() > 0) 
-            {
-                // ReSharper disable once PossibleMultipleEnumeration
-                IEnumerable<IMessage> messages = fMessages.Take(count);
-                await ((ITextChannel) Context.Channel).DeleteMessagesAsync(messages);
-            }
-        }
     }
 }
