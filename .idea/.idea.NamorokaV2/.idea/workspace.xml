@@ -4,7 +4,58 @@
     <projectFile>NamorokaV2/NamorokaV2.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f900b25c-430f-4ec3-84d4-96f5903c2468" name="Default Changelist" comment="" />
+    <list default="true" id="f900b25c-430f-4ec3-84d4-96f5903c2468" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NamorokaV2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NamorokaV2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaBot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaBot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Configuration/RoleIds.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Configuration/RoleIds.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/HelpModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/HelpModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/InfoModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/InfoModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Ban.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Ban.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Clear.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Clear.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Mute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Mute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Shutdown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Shutdown.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Unmute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Unmute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Warn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Warn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/NicknameModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/NicknameModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaV2.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaV2.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/Services/CommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/Services/CommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/Services/JsonService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/Services/JsonService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/NamorokaV2.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/NamorokaV2.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/NamorokaV2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/NamorokaV2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/NamorokaV2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/NamorokaV2.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/Telerik.Windows.Controls.Chart.Direct2D.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/Telerik.Windows.Controls.Chart.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/Telerik.Windows.Controls.Charting.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/Telerik.Windows.Controls.Data.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/Telerik.Windows.Controls.DataVisualization.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/Telerik.Windows.Controls.GridView.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/Telerik.Windows.Controls.Input.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/Telerik.Windows.Controls.Navigation.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/Telerik.Windows.Controls.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/Telerik.Windows.Data.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/Telerik.Windows.Diagrams.Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/UiComm.Client.WPF.Controls.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/UiComm.Client.WPF.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/UiComm.Client.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/UiComm.Core.Connector.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/UiComm.Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/UiComm.Desktop.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/UiComm.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/Umbraco.Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/Xabe.FFmpeg.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/configuration/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/configuration/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/NamorokaV2.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/NamorokaV2.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/rider.project.restore.info" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,11 +69,33 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/Services/JsonService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/Services/CommandHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Ban.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/NicknameModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Clear.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Unmute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Warn.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Shutdown.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Mute.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Ban.cs" />
       <option value="$PROJECT_DIR$/NamorokaV2/NamorokaBot.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Configuration/RoleIds.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/HelpModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/InfoModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Ban.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Clear.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Mute.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Shutdown.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Unmute.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Warn.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/NicknameModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/Services/CommandHandler.cs" />
       <option value="$PROJECT_DIR$/NamorokaV2/Services/JsonService.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaV2.csproj" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jrIhK1v5tRDFdBzQD1uCGeTsdy" />
@@ -35,6 +108,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34979424" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -71,7 +146,8 @@
       <updated>1604555903337</updated>
       <workItem from="1604555908752" duration="32000" />
       <workItem from="1604555998584" duration="358000" />
-      <workItem from="1604556594426" duration="311000" />
+      <workItem from="1604556594426" duration="540000" />
+      <workItem from="1604557162925" duration="1379000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1604556632245</created>
@@ -87,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604556865718</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="gitignore update again..">
+      <created>1604556995675</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1604556995675</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,6 +188,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

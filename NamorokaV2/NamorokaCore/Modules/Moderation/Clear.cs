@@ -47,10 +47,13 @@ namespace NamorokaV2
             IEnumerable<IMessage> aMessages = await Context.Channel.GetMessagesAsync(history).FlattenAsync();
             IEnumerable<IMessage> fMessages = aMessages.Where(m => m.Author.Id == user.Id).Where(m => (DateTimeOffset.Now - m.CreatedAt).Days < 14);
 
+            // ReSharper disable once UseMethodAny.0
+            // ReSharper disable once PossibleMultipleEnumeration
             if (fMessages.Count() > 0) 
             {
+                // ReSharper disable once PossibleMultipleEnumeration
                 IEnumerable<IMessage> messages = fMessages.Take(count);
-                await (Context.Channel as ITextChannel).DeleteMessagesAsync(messages);
+                await ((ITextChannel) Context.Channel).DeleteMessagesAsync(messages);
             }
         }
     }

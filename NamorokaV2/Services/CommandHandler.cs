@@ -1,12 +1,7 @@
-﻿using System;
-using System.IO;
-using System.Reflection;
-using System.Text;
+﻿using System.Reflection;
 using System.Threading.Tasks;
 using Discord.Commands;
 using Discord.WebSocket;
-using Newtonsoft.Json;
-using YamlDotNet.Serialization;
 
 namespace NamorokaV2
 {

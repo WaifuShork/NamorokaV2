@@ -1,10 +1,8 @@
-﻿using System.ComponentModel.Design.Serialization;
-using Discord.Commands;
+﻿using Discord.Commands;
 using Discord.WebSocket;
 using System.Threading.Tasks;
 using Discord;
 using NamorokaV2.Attributes;
-using Umbraco.Core;
 
 namespace NamorokaV2
 {

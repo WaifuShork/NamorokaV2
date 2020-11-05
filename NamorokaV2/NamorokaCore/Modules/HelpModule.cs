@@ -53,7 +53,6 @@ namespace NamorokaV2
         [Command("help")]
         public async Task HelpAsync(string command)
         {
-            ConfigJson configJson = await config.GetConfigJson(JsonService._configJson);
             SearchResult result = _service.Search(Context, command);
 
             if (!result.IsSuccess)
@@ -62,7 +61,6 @@ namespace NamorokaV2
                 return;
             }
 
-            string prefix = configJson.Prefix;
             EmbedBuilder builder = new EmbedBuilder()
             {
                 Color = new Color(114, 137, 218),

@@ -1,7 +1,5 @@
 ﻿using Discord.Commands;
-using Discord.WebSocket;
 using System.Threading.Tasks;
-using Discord;
 using NamorokaV2.Attributes;
 
 namespace NamorokaV2

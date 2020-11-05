@@ -13,9 +13,6 @@
           "Microsoft.Extensions.DependencyInjection": "5.0.0-rc.2.20475.5",
           "NetEscapades.Configuration.Yaml": "2.0.1",
           "TsSoft.EntityService": "1.1.2",
-          "UiComm.Client": "1.3.55",
-          "UmbracoCms.Core": "8.9.0",
-          "Xabe.FFmpeg": "4.3.1",
           "libsodium": "1.0.18"
         },
         "runtime": {
@@ -1605,101 +1602,6 @@
           }
         }
       },
-      "UiComm.Client/1.3.55": {
-        "runtime": {
-          "lib/net461/Telerik.Windows.Controls.Chart.Direct2D.dll": {
-            "assemblyVersion": "2016.3.1026.45",
-            "fileVersion": "2016.3.1026.45"
-          },
-          "lib/net461/Telerik.Windows.Controls.Chart.dll": {
-            "assemblyVersion": "2016.3.1026.45",
-            "fileVersion": "2016.3.1026.45"
-          },
-          "lib/net461/Telerik.Windows.Controls.Charting.dll": {
-            "assemblyVersion": "2016.1.121.45",
-            "fileVersion": "2016.1.121.45"
-          },
-          "lib/net461/Telerik.Windows.Controls.Data.dll": {
-            "assemblyVersion": "2016.3.1026.45",
-            "fileVersion": "2016.3.1026.45"
-          },
-          "lib/net461/Telerik.Windows.Controls.DataVisualization.dll": {
-            "assemblyVersion": "2016.3.1026.45",
-            "fileVersion": "2016.3.1026.45"
-          },
-          "lib/net461/Telerik.Windows.Controls.GridView.dll": {
-            "assemblyVersion": "2016.3.1026.45",
-            "fileVersion": "2016.3.1026.45"
-          },
-          "lib/net461/Telerik.Windows.Controls.Input.dll": {
-            "assemblyVersion": "2016.3.1026.45",
-            "fileVersion": "2016.3.1026.45"
-          },
-          "lib/net461/Telerik.Windows.Controls.Navigation.dll": {
-            "assemblyVersion": "2016.3.1026.45",
-            "fileVersion": "2016.3.1026.45"
-          },
-          "lib/net461/Telerik.Windows.Controls.dll": {
-            "assemblyVersion": "2016.3.1026.45",
-            "fileVersion": "2016.3.1026.45"
-          },
-          "lib/net461/Telerik.Windows.Data.dll": {
-            "assemblyVersion": "2016.3.1026.45",
-            "fileVersion": "2016.3.1026.45"
-          },
-          "lib/net461/Telerik.Windows.Diagrams.Core.dll": {
-            "assemblyVersion": "2016.3.1026.45",
-            "fileVersion": "2016.3.1026.45"
-          },
-          "lib/net461/UiComm.Client.WPF.Controls.dll": {
-            "assemblyVersion": "1.3.54.0",
-            "fileVersion": "1.3.54.0"
-          },
-          "lib/net461/UiComm.Client.WPF.dll": {
-            "assemblyVersion": "1.3.54.0",
-            "fileVersion": "1.3.54.0"
-          },
-          "lib/net461/UiComm.Client.dll": {
-            "assemblyVersion": "1.3.54.0",
-            "fileVersion": "1.3.54.0"
-          },
-          "lib/net461/UiComm.Core.Connector.dll": {
-            "assemblyVersion": "1.3.54.0",
-            "fileVersion": "1.3.54.0"
-          },
-          "lib/net461/UiComm.Core.dll": {
-            "assemblyVersion": "1.3.54.0",
-            "fileVersion": "1.3.54.0"
-          },
-          "lib/net461/UiComm.Desktop.dll": {
-            "assemblyVersion": "1.3.54.0",
-            "fileVersion": "1.3.54.0"
-          },
-          "lib/net461/UiComm.dll": {
-            "assemblyVersion": "1.3.54.0",
-            "fileVersion": "1.3.54.0"
-          }
-        }
-      },
-      "UmbracoCms.Core/8.9.0": {
-        "runtime": {
-          "lib/net472/Umbraco.Core.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.9.0.0"
-          }
-        }
-      },
-      "Xabe.FFmpeg/4.3.1": {
-        "dependencies": {
-          "Newtonsoft.Json": "12.0.2"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Xabe.FFmpeg.dll": {
-            "assemblyVersion": "4.3.1.0",
-            "fileVersion": "4.3.1.0"
-          }
-        }
-      },
       "YamlDotNet/6.1.2": {
         "runtime": {
           "lib/netstandard1.3/YamlDotNet.dll": {
@@ -2716,27 +2618,6 @@
       "sha512": "sha512-eQeGPNsHdvLMBF7iaw8FzwoVGyfHWe1tu8CE2w74E5PwjuIT7r/o4IoHFli+7NP6Cc7a7501CSDDbe0GMvQvmA==",
       "path": "tssoft.expressions.selectbuilder.models/1.1.2",
       "hashPath": "tssoft.expressions.selectbuilder.models.1.1.2.nupkg.sha512"
-    },
-    "UiComm.Client/1.3.55": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-v8aiYpmsTzsBpEDB12LF7v4lFEQxasMDmm7rFX6FJthtSztOnUHXIEKIXYAoxKd1pPFPe4XFBCJFngpUFrWV+w==",
-      "path": "uicomm.client/1.3.55",
-      "hashPath": "uicomm.client.1.3.55.nupkg.sha512"
-    },
-    "UmbracoCms.Core/8.9.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-sd+PAo/I7zCCvTToOz1VugVFawWEp7Z0jRDRuc+da+oI34DBxQXY6uItESDDojz9Twa0xyA3AZLNUxPQCr/rVw==",
-      "path": "umbracocms.core/8.9.0",
-      "hashPath": "umbracocms.core.8.9.0.nupkg.sha512"
-    },
-    "Xabe.FFmpeg/4.3.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-PUuW7n18eV5s9IDOTcAzoz+GLXWjXjqjvd30rxuhsjhc13ycbDaHmsCctnzBDe67tSJnagEqZc9yJ1uNmv5WSw==",
-      "path": "xabe.ffmpeg/4.3.1",
-      "hashPath": "xabe.ffmpeg.4.3.1.nupkg.sha512"
     },
     "YamlDotNet/6.1.2": {
       "type": "package",

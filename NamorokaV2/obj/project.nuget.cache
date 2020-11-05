@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "d8MoaNeSj4yQrh/wHhrfTnneAaBqLSJ2BYitPMkebm63Z4Y1AUwZKQKgLe1Q98tlMgPKR1ty9/ZBw3t+j9bMVw==",
+  "dgSpecHash": "PJlg/0Zj+yJEOq/CIvOnA5rc+Pqz5NaYYxBQMgRRyo/yL0Q5Q1itNfYXPPkN0unBpc4/sikhA0GwcHnJabn01A==",
   "success": true,
   "projectFilePath": "G:\\source\\NamorokaV2\\NamorokaV2\\NamorokaV2\\NamorokaV2.csproj",
   "expectedPackageFiles": [
@@ -147,31 +147,7 @@
     "C:\\Users\\ashle\\.nuget\\packages\\tssoft.expressions.orderby\\1.1.2\\tssoft.expressions.orderby.1.1.2.nupkg.sha512",
     "C:\\Users\\ashle\\.nuget\\packages\\tssoft.expressions.selectbuilder\\1.1.2\\tssoft.expressions.selectbuilder.1.1.2.nupkg.sha512",
     "C:\\Users\\ashle\\.nuget\\packages\\tssoft.expressions.selectbuilder.models\\1.1.2\\tssoft.expressions.selectbuilder.models.1.1.2.nupkg.sha512",
-    "C:\\Users\\ashle\\.nuget\\packages\\uicomm.client\\1.3.55\\uicomm.client.1.3.55.nupkg.sha512",
-    "C:\\Users\\ashle\\.nuget\\packages\\umbracocms.core\\8.9.0\\umbracocms.core.8.9.0.nupkg.sha512",
-    "C:\\Users\\ashle\\.nuget\\packages\\xabe.ffmpeg\\4.3.1\\xabe.ffmpeg.4.3.1.nupkg.sha512",
     "C:\\Users\\ashle\\.nuget\\packages\\yamldotnet\\6.1.2\\yamldotnet.6.1.2.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'UiComm.Client 1.3.55' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
-      "libraryId": "UiComm.Client",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'UmbracoCms.Core 8.9.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
-      "libraryId": "UmbracoCms.Core",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  "logs": []
 }

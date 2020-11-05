@@ -2260,54 +2260,6 @@
           "lib/netstandard1.5/TsSoft.Expressions.SelectBuilder.Models.dll": {}
         }
       },
-      "UiComm.Client/1.3.55": {
-        "type": "package",
-        "compile": {
-          "lib/net461/_._": {}
-        },
-        "runtime": {
-          "lib/net461/System.AppContext.dll": {},
-          "lib/net461/Telerik.Windows.Controls.Chart.Direct2D.dll": {},
-          "lib/net461/Telerik.Windows.Controls.Chart.dll": {},
-          "lib/net461/Telerik.Windows.Controls.Charting.dll": {},
-          "lib/net461/Telerik.Windows.Controls.Data.dll": {},
-          "lib/net461/Telerik.Windows.Controls.DataVisualization.dll": {},
-          "lib/net461/Telerik.Windows.Controls.GridView.dll": {},
-          "lib/net461/Telerik.Windows.Controls.Input.dll": {},
-          "lib/net461/Telerik.Windows.Controls.Navigation.dll": {},
-          "lib/net461/Telerik.Windows.Controls.dll": {},
-          "lib/net461/Telerik.Windows.Data.dll": {},
-          "lib/net461/Telerik.Windows.Diagrams.Core.dll": {},
-          "lib/net461/UiComm.Client.WPF.Controls.dll": {},
-          "lib/net461/UiComm.Client.WPF.dll": {},
-          "lib/net461/UiComm.Client.dll": {},
-          "lib/net461/UiComm.Core.Connector.dll": {},
-          "lib/net461/UiComm.Core.dll": {},
-          "lib/net461/UiComm.Desktop.dll": {},
-          "lib/net461/UiComm.dll": {}
-        }
-      },
-      "UmbracoCms.Core/8.9.0": {
-        "type": "package",
-        "compile": {
-          "lib/net472/Umbraco.Core.dll": {}
-        },
-        "runtime": {
-          "lib/net472/Umbraco.Core.dll": {}
-        }
-      },
-      "Xabe.FFmpeg/4.3.1": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "9.0.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/Xabe.FFmpeg.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Xabe.FFmpeg.dll": {}
-        }
-      },
       "YamlDotNet/6.1.2": {
         "type": "package",
         "compile": {
@@ -7061,68 +7013,6 @@
         "tssoft.expressions.selectbuilder.models.nuspec"
       ]
     },
-    "UiComm.Client/1.3.55": {
-      "sha512": "v8aiYpmsTzsBpEDB12LF7v4lFEQxasMDmm7rFX6FJthtSztOnUHXIEKIXYAoxKd1pPFPe4XFBCJFngpUFrWV+w==",
-      "type": "package",
-      "path": "uicomm.client/1.3.55",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net461/System.AppContext.dll",
-        "lib/net461/Telerik.Windows.Controls.Chart.Direct2D.dll",
-        "lib/net461/Telerik.Windows.Controls.Chart.dll",
-        "lib/net461/Telerik.Windows.Controls.Charting.dll",
-        "lib/net461/Telerik.Windows.Controls.Data.dll",
-        "lib/net461/Telerik.Windows.Controls.DataVisualization.dll",
-        "lib/net461/Telerik.Windows.Controls.GridView.dll",
-        "lib/net461/Telerik.Windows.Controls.Input.dll",
-        "lib/net461/Telerik.Windows.Controls.Navigation.dll",
-        "lib/net461/Telerik.Windows.Controls.dll",
-        "lib/net461/Telerik.Windows.Data.dll",
-        "lib/net461/Telerik.Windows.Diagrams.Core.dll",
-        "lib/net461/UiComm.Client.WPF.Controls.dll",
-        "lib/net461/UiComm.Client.WPF.dll",
-        "lib/net461/UiComm.Client.dll",
-        "lib/net461/UiComm.Core.Connector.dll",
-        "lib/net461/UiComm.Core.dll",
-        "lib/net461/UiComm.Desktop.dll",
-        "lib/net461/UiComm.dll",
-        "lib/portable-uap10.0/UiComm.Client.Universal.dll",
-        "lib/portable-uap10.0/UiComm.Client.dll",
-        "lib/portable-uap10.0/UiComm.Core.Connector.dll",
-        "lib/portable-uap10.0/UiComm.Core.dll",
-        "lib/portable-uap10.0/UiComm.dll",
-        "uicomm.client.1.3.55.nupkg.sha512",
-        "uicomm.client.nuspec"
-      ]
-    },
-    "UmbracoCms.Core/8.9.0": {
-      "sha512": "sd+PAo/I7zCCvTToOz1VugVFawWEp7Z0jRDRuc+da+oI34DBxQXY6uItESDDojz9Twa0xyA3AZLNUxPQCr/rVw==",
-      "type": "package",
-      "path": "umbracocms.core/8.9.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net472/Umbraco.Core.dll",
-        "lib/net472/Umbraco.Core.pdb",
-        "lib/net472/Umbraco.Core.xml",
-        "umbracocms.core.8.9.0.nupkg.sha512",
-        "umbracocms.core.nuspec"
-      ]
-    },
-    "Xabe.FFmpeg/4.3.1": {
-      "sha512": "PUuW7n18eV5s9IDOTcAzoz+GLXWjXjqjvd30rxuhsjhc13ycbDaHmsCctnzBDe67tSJnagEqZc9yJ1uNmv5WSw==",
-      "type": "package",
-      "path": "xabe.ffmpeg/4.3.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/Xabe.FFmpeg.dll",
-        "lib/netstandard2.0/Xabe.FFmpeg.xml",
-        "xabe.ffmpeg.4.3.1.nupkg.sha512",
-        "xabe.ffmpeg.nuspec"
-      ]
-    },
     "YamlDotNet/6.1.2": {
       "sha512": "ADQQokM9Zq0Ad+GOFeOzeR2rW+DrZNGQEVLrf10hI+xoxjYhPK01j/KgNZ/APngalhiroVzsohuZGfWiewRvaQ==",
       "type": "package",
@@ -7153,9 +7043,6 @@
       "Microsoft.Extensions.DependencyInjection >= 5.0.0-rc.2.20475.5",
       "NetEscapades.Configuration.Yaml >= 2.0.1",
       "TsSoft.EntityService >= 1.1.2",
-      "UiComm.Client >= 1.3.55",
-      "UmbracoCms.Core >= 8.9.0",
-      "Xabe.FFmpeg >= 4.3.1",
       "libsodium >= 1.0.18"
     ]
   },
@@ -7222,20 +7109,6 @@
             "target": "Package",
             "version": "[1.1.2, )"
           },
-          "UiComm.Client": {
-            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "[1.3.55, )"
-          },
-          "UmbracoCms.Core": {
-            "target": "Package",
-            "version": "[8.9.0, )"
-          },
-          "Xabe.FFmpeg": {
-            "target": "Package",
-            "version": "[4.3.1, )"
-          },
           "libsodium": {
             "target": "Package",
             "version": "[1.0.18, )"
@@ -7259,27 +7132,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'UiComm.Client 1.3.55' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
-      "libraryId": "UiComm.Client",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'UmbracoCms.Core 8.9.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
-      "libraryId": "UmbracoCms.Core",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  }
 }
