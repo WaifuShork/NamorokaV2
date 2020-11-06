@@ -4,29 +4,114 @@
     <projectFile>NamorokaV2/NamorokaV2.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f900b25c-430f-4ec3-84d4-96f5903c2468" name="Default Changelist" comment="" />
+    <list default="true" id="f900b25c-430f-4ec3-84d4-96f5903c2468" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/Services/ServiceCollection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NamorokaV2/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NamorokaV2/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NamorokaV2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NamorokaV2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaBot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaBot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ConfigModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ConfigModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/HelpModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/HelpModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/InfoModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/InfoModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Ban.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Ban.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Clear.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Clear.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/InfractionModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/InfractionModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/KickModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/KickModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Mute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Mute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Shutdown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Shutdown.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Unmute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Unmute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Warn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Warn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/NicknameModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/NicknameModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/Services/CommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/Services/CommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/Services/LoggingService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/Services/LoggingService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/NamorokaV2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/NamorokaV2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/NamorokaV2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/NamorokaV2.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.pdb" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="b29145a269fc56316376174726a632fa3d44a7c2" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/Services/JsonService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/Services/CommandHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Ban.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/96/4b6b427a/IMessageChannel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/2a/adccff5c/IUserMessage.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/NicknameModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Clear.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5C53B794-1A72-42FC-B689-47E6D2F3281F/C/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Unmute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Warn.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Shutdown.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Mute.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Ban.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaBot.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaV2.csproj" />
+      <option value="$PROJECT_DIR$/NamorokaV2/Version.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/logs/infractions.json" />
+      <option value="$PROJECT_DIR$/NamorokaV2/Services/Initialize.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/DatabaseModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/EightBallAnswer.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/CsharpiEntities.cs" />
       <option value="$PROJECT_DIR$/NamorokaV2/Services/JsonService.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Attributes/RequireRoleAttribute.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Configuration/RoleIds.cs" />
+      <option value="$PROJECT_DIR$/README.md" />
+      <option value="$PROJECT_DIR$/NamorokaV2/Program.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/Services/LoggingService.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/Services/CommandHandler.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaBot.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/Services/ServiceCollection.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Ban.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Clear.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/ClearMessage.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/NicknameModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/HelpModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ConfigModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Warn.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Unmute.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Shutdown.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Mute.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/KickModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/configuration/config.json" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/InfoModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/InfractionModule.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jrIhK1v5tRDFdBzQD1uCGeTsdy" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34979758" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -60,7 +145,50 @@
       <updated>1604555903337</updated>
       <workItem from="1604555908752" duration="32000" />
       <workItem from="1604555998584" duration="358000" />
+      <workItem from="1604556594426" duration="540000" />
+      <workItem from="1604557162925" duration="5340000" />
+      <workItem from="1604563468619" duration="3375000" />
+      <workItem from="1604570124234" duration="1170000" />
+      <workItem from="1604611125079" duration="349000" />
+      <workItem from="1604612271158" duration="155000" />
+      <workItem from="1604613554804" duration="7989000" />
     </task>
+    <task id="LOCAL-00001" summary="init">
+      <created>1604556632245</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604556632245</updated>
+    </task>
+    <task id="LOCAL-00002" summary="gitignore update again..">
+      <created>1604556865718</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1604556865718</updated>
+    </task>
+    <task id="LOCAL-00003" summary="gitignore update again..">
+      <created>1604556995675</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1604556995675</updated>
+    </task>
+    <task id="LOCAL-00004" summary="init">
+      <created>1604558883562</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1604558883562</updated>
+    </task>
+    <task id="LOCAL-00005" summary="gitignore">
+      <created>1604612292051</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1604612292051</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -68,7 +196,24 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="gitignore update again.." />
+    <MESSAGE value="init" />
+    <MESSAGE value="gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
   </component>
 </project>

@@ -1,16 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using NamorokaV2.Attributes;
 using Newtonsoft.Json;
-
-// ReSharper disable once ClassNeverInstantiated.Global
 
 namespace NamorokaV2
 {
@@ -20,32 +17,50 @@ namespace NamorokaV2
         [Summary("Echoes a message.")]
         public async Task SayAsync([Remainder] [Summary("The text to echo")] string echo)
         {
+
+            SocketUserMessage message = Context.Message;
             switch (echo)
             {
                 case "@everyone":
+                    await Context.Channel.DeleteMessageAsync(message);
                     await ReplyAsync("lol no");
                     break;
                 case "@here":
+                    await Context.Channel.DeleteMessageAsync(message);
                     await ReplyAsync("lol no");
                     break;
                 default:
+                    await Context.Channel.DeleteMessageAsync(message);
                     await ReplyAsync(echo);
                     break;
             }
         }
+        
 
         [Command("square")]
         [Summary("Squares a number.")]
         public async Task SquareAsync([Summary("The number to square.")] string num)
         {
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
             float value = float.Parse(num, CultureInfo.InvariantCulture.NumberFormat);
             await Context.Channel.SendMessageAsync($"{value}^2 = {Math.Pow(value, 2)}");
+        }
+        
+        [Command("f")]
+        public async Task FAsync()
+        {
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
+            await ReplyAsync("F in chat bois");
         }
 
         [Command("userinfo")]
         [Summary("Returns info about the current user, or the user parameter, if one is passed")]
         public async Task UserInfoAsync([Summary("The (optional)")] SocketUser user)
         {
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
             SocketUser userInfo = user ?? Context.Client.CurrentUser;
             if (user != null)
                 await ReplyAsync($"{user.Username}#{userInfo.Discriminator}");
@@ -56,6 +71,8 @@ namespace NamorokaV2
         [Summary("Returns the current version of the bot")]
         public async Task Version()
         {
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
             await Context.Channel.SendMessageAsync($"Namoroka v{NamorokaV2.Version.ShortVersion} : Discord.Net v{NamorokaV2.Version.DiscordVersion}");
         }
 
@@ -63,6 +80,8 @@ namespace NamorokaV2
         [Summary("Gets the users avatar and sends it in the channel")]
         public async Task Avatar(SocketUser user)
         {
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
             SocketUser userInfo = user ?? Context.Client.CurrentUser;
             if (user != null)
                 await ReplyAsync(userInfo.GetAvatarUrl());
@@ -71,12 +90,13 @@ namespace NamorokaV2
         [Command("bread")]
         public async Task Bread()
         {
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
             EmbedBuilder builder = new EmbedBuilder
             {
                 Title = "here's the loaf",
                 ImageUrl = "https://i.imgur.com/cenSuAk.png"
             };
-
             
             Embed embed = builder.Build();
             
@@ -87,6 +107,8 @@ namespace NamorokaV2
         [Command("prefix")]
         public async Task PrefixAsync(string prefix)
         {
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
             string json = await File.ReadAllTextAsync(JsonService._configJson);
             dynamic jsonObj = JsonConvert.DeserializeObject(json);
             jsonObj["prefix"] = prefix;

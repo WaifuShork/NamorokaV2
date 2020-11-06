@@ -1,51 +1,48 @@
 ﻿using System;
-using System.IO;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using Discord.Commands;
 using Discord.WebSocket;
-using Newtonsoft.Json;
-using YamlDotNet.Serialization;
 
 namespace NamorokaV2
 {
-    public class CommandHandler
+    internal class CommandHandler
     {
         private readonly DiscordSocketClient _client;
         private readonly CommandService _commands;
+        private readonly IServiceProvider _services;
         
-
-        
-        public CommandHandler(DiscordSocketClient client, CommandService commands)
+        internal CommandHandler(DiscordSocketClient client, CommandService commands, IServiceProvider services)
         {
             _commands = commands;
             _client = client;
+            _services = services;
         }
 
-        public async Task InstallCommandsAsync()
+        internal async Task InstallCommandsAsync()
         {
             _client.MessageReceived += HandleCommandAsync;
 
-            await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), null);
+            await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
         }
         
         private async Task HandleCommandAsync(SocketMessage messageParam)
         {
-            JsonService config = new JsonService();
-            ConfigJson configJson = await config.GetConfigJson(JsonService._configJson);
+            ConfigJson configJson = await JsonService.GetConfigJson(JsonService._configJson);
             
             SocketUserMessage message = (SocketUserMessage) messageParam;
             if (message == null) return;
             
             int argPos = 0;
-            
             if (!(message.HasStringPrefix(configJson.Prefix, ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos)) || message.Author.IsBot)
                 return;
             
             SocketCommandContext context = new SocketCommandContext(_client, message);
             
-            await _commands.ExecuteAsync(context, argPos, null);
+            IResult result = await _commands.ExecuteAsync(context, argPos, _services);
+
+            if (!result.IsSuccess)
+                await context.Channel.SendMessageAsync(result.ErrorReason);
         }
     }
 }

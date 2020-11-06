@@ -1,10 +1,7 @@
 ﻿using Discord.Commands;
-using Discord.WebSocket;
 using System.Threading.Tasks;
 using Discord;
-using Umbraco.Core.Models.Membership;
-using IUser = Discord.IUser;
-
+using Discord.WebSocket;
 
 namespace NamorokaV2
 {
@@ -20,12 +17,14 @@ namespace NamorokaV2
         [Command("nick"), Priority(1)]
         [Summary("Change another user's nickname to the specified text")]
         // [RequireUserPermission(GuildPermission.ManageNicknames)]
-        public async Task Nick(IUser  user, [Remainder]string name)
+        public async Task Nick(IUser user, [Remainder]string name)
         {
+            SocketUserMessage message = Context.Message;
             IUser userContext = Context.Guild.CurrentUser;
             if (userContext.Id == user.Id)
                 return;
             await ((IGuildUser) user).ModifyAsync(x => x.Nickname = name);
+            await Context.Channel.DeleteMessageAsync(message);
             await ReplyAsync($"{user.Mention} I changed your name to **{name}**");
         }
     }

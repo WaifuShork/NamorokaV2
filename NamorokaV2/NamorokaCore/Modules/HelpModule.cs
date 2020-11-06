@@ -2,14 +2,13 @@
 using Discord.Commands;
 using System.Linq;
 using System.Threading.Tasks;
+using Discord.WebSocket;
 
 namespace NamorokaV2
 {
     public class HelpModule : ModuleBase<SocketCommandContext>
     {
         private readonly CommandService _service;
-        private readonly JsonService config = new JsonService();
-
         public HelpModule(CommandService service)
         {
             _service = service;
@@ -18,7 +17,9 @@ namespace NamorokaV2
         [Command("help")]
         public async Task HelpAsync()
         {
-            ConfigJson configJson = await config.GetConfigJson(JsonService._configJson);
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
+            ConfigJson configJson = await JsonService.GetConfigJson(JsonService._configJson);
             string prefix = configJson.Prefix; 
             EmbedBuilder builder = new EmbedBuilder()
             {
@@ -53,16 +54,16 @@ namespace NamorokaV2
         [Command("help")]
         public async Task HelpAsync(string command)
         {
-            ConfigJson configJson = await config.GetConfigJson(JsonService._configJson);
             SearchResult result = _service.Search(Context, command);
 
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
             if (!result.IsSuccess)
             {
                 await ReplyAsync($"Sorry, I couldn't find a command like **{command}**.");
                 return;
             }
 
-            string prefix = configJson.Prefix;
             EmbedBuilder builder = new EmbedBuilder()
             {
                 Color = new Color(114, 137, 218),

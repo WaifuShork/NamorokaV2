@@ -4,6 +4,6 @@ namespace NamorokaV2
 {
     internal static class Program
     {
-        public static async Task Main() => await new NamorokaBot().RunAsync();
+        internal static async Task Main() => await new NamorokaBot().RunAsync();
     }
 }
