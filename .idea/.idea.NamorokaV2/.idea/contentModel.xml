@@ -52,6 +52,7 @@
           <e p="CommandHandler.cs" t="Include" />
           <e p="JsonService.cs" t="Include" />
           <e p="LoggingService.cs" t="Include" />
+          <e p="ServiceCollection.cs" t="Include" />
         </e>
         <e p="Version.cs" t="Include" />
       </e>

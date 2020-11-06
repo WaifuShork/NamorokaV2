@@ -1,6 +1,7 @@
 ﻿using Discord.Commands;
 using System.Threading.Tasks;
 using Discord;
+using Discord.WebSocket;
 
 namespace NamorokaV2
 {
@@ -18,10 +19,12 @@ namespace NamorokaV2
         // [RequireUserPermission(GuildPermission.ManageNicknames)]
         public async Task Nick(IUser user, [Remainder]string name)
         {
+            SocketUserMessage message = Context.Message;
             IUser userContext = Context.Guild.CurrentUser;
             if (userContext.Id == user.Id)
                 return;
             await ((IGuildUser) user).ModifyAsync(x => x.Nickname = name);
+            await Context.Channel.DeleteMessageAsync(message);
             await ReplyAsync($"{user.Mention} I changed your name to **{name}**");
         }
     }

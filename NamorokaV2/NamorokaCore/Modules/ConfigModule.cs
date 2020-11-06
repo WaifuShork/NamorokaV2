@@ -18,6 +18,8 @@ namespace NamorokaV2
         [Command("prefix")]
         public async Task PrefixAsync(string prefix)
         {
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
             string json = await File.ReadAllTextAsync(JsonService._configJson);
             dynamic jsonObj = JsonConvert.DeserializeObject(json);
             jsonObj["prefix"] = prefix;

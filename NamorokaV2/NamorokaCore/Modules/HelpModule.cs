@@ -2,6 +2,7 @@
 using Discord.Commands;
 using System.Linq;
 using System.Threading.Tasks;
+using Discord.WebSocket;
 
 namespace NamorokaV2
 {
@@ -16,6 +17,8 @@ namespace NamorokaV2
         [Command("help")]
         public async Task HelpAsync()
         {
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
             ConfigJson configJson = await JsonService.GetConfigJson(JsonService._configJson);
             string prefix = configJson.Prefix; 
             EmbedBuilder builder = new EmbedBuilder()
@@ -53,6 +56,8 @@ namespace NamorokaV2
         {
             SearchResult result = _service.Search(Context, command);
 
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
             if (!result.IsSuccess)
             {
                 await ReplyAsync($"Sorry, I couldn't find a command like **{command}**.");

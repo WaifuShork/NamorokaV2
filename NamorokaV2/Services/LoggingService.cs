@@ -15,7 +15,7 @@ namespace NamorokaV2
             command.Log += LogAsync;
         }
 
-        internal static async Task LogAsync(LogMessage message)
+        private static async Task LogAsync(LogMessage message)
         {
             if (message.Exception is CommandException cmdException)
             {

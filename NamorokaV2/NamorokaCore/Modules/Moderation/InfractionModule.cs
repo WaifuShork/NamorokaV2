@@ -2,18 +2,23 @@
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
+using Discord.WebSocket;
 using Newtonsoft.Json;
 
 namespace NamorokaV2
 {
-    public sealed class InfractionModule : ModuleBase<SocketCommandContext>
+    public sealed partial class Moderation    
     {
-        [Command("infr")]
-        public async Task InfractionAsync()
+        [Command("infraction")]
+        [Alias("infr", "inf", "warnings", "warns")]
+        public async Task InfractionAsync(SocketGuildUser user)
         {
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
+            
             string json = await File.ReadAllTextAsync(JsonService._loggingJson);
             dynamic jsonObj = JsonConvert.DeserializeObject(json);
-            string user = jsonObj["user"];
+            user = jsonObj["user"];
             string reason = jsonObj["reason"];
             string id = jsonObj["id"];
             
