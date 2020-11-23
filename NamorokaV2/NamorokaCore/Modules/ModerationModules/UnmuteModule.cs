@@ -19,7 +19,7 @@ namespace NamorokaV2
             await Context.Channel.DeleteMessageAsync(message);
             SocketRole role = Context.Guild.GetRole(RoleIds.Muted);
             await ((IGuildUser)user).RemoveRoleAsync(role);
-            await Context.Channel.SendMessageAsync($"{user} has been unmuted!");
+            await logsAsync.SendLogMessageAsync($"{user} has been unmuted.");
         }
     }
 }

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace NamorokaV2
 {
-    internal sealed class JsonService
+    internal static class JsonService
     {
         public static string _configJson { get; } = "G:/source/NamorokaV2/NamorokaV2/NamorokaV2/bin/Debug/netcoreapp3.1/configuration/config.json";
         public static string _loggingJson { get; } = "G:/source/NamorokaV2/NamorokaV2/NamorokaV2/bin/Debug/netcoreapp3.1/logs/infractions.json";

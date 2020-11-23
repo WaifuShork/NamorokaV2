@@ -1,9 +1,7 @@
 ﻿using System;
-
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-
 
 namespace NamorokaV2
 {
@@ -14,8 +12,7 @@ namespace NamorokaV2
         public IMessageChannel Channel { get; }
         public IUser User { get; }
         public IUserMessage Message { get; }
-
-
+        
         public NamorokaContext(SocketUserMessage msg, IServiceProvider provider)
         {
             Client = (IDiscordClient)provider.GetService(typeof(DiscordSocketClient));

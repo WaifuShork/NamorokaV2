@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using NamorokaV2.Attributes;
 using Newtonsoft.Json;
+using Discord.Addons.Interactive;
 
 namespace NamorokaV2
 {
@@ -36,7 +38,6 @@ namespace NamorokaV2
             }
         }
         
-
         [Command("square")]
         [Summary("Squares a number.")]
         public async Task SquareAsync([Summary("The number to square.")] string num)
@@ -53,17 +54,6 @@ namespace NamorokaV2
             SocketUserMessage message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
             await ReplyAsync("F in chat bois");
-        }
-
-        [Command("userinfo")]
-        [Summary("Returns info about the current user, or the user parameter, if one is passed")]
-        public async Task UserInfoAsync([Summary("The (optional)")] SocketUser user)
-        {
-            SocketUserMessage message = Context.Message;
-            await Context.Channel.DeleteMessageAsync(message);
-            SocketUser userInfo = user ?? Context.Client.CurrentUser;
-            if (user != null)
-                await ReplyAsync($"{user.Username}#{userInfo.Discriminator}");
         }
 
         [Command("version")]
@@ -117,5 +107,23 @@ namespace NamorokaV2
             
             await Context.Channel.SendMessageAsync($"I changed your prefix to: {prefix}");
         }
+
+        #pragma warning disable 1998
+        public async Task OnUserJoin()
+        #pragma warning restore 1998
+        {
+            SocketRole role = Context.Guild.GetRole(RoleIds.MakoShork);
+            Context.Client.UserJoined += user => user.AddRoleAsync(role);
+        }
+        
+        [Command("cheesymac")]
+        public async Task CheesyMacAsync()
+        {
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
+            await Context.Channel.SendMessageAsync("I'M SORRY MY PUSSY IS SO TIGHT AND JUICY AND SOUNDS LIKE MACARONI & CHEESE IT'S NOT MY FAULT <@329502393672663042>");
+        }
+
+        
     }
 }  
