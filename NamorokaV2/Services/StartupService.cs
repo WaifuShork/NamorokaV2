@@ -11,13 +11,12 @@ namespace NamorokaV2
 {
     public class StartupService
     {
-        public static IServiceProvider _provider;
-        private readonly DiscordSocketClient _client;
+        private static IServiceProvider _provider;
+        public static DiscordSocketClient _client;
         private readonly CommandService _commands;
         private readonly IConfigurationRoot _config;
 
-        public StartupService(IServiceProvider provider, DiscordSocketClient client, CommandService commands,
-            IConfigurationRoot config)
+        public StartupService(IServiceProvider provider, DiscordSocketClient client, CommandService commands, IConfigurationRoot config)
         {
             _provider = provider;
             _client = client;
@@ -33,9 +32,8 @@ namespace NamorokaV2
                 Console.WriteLine("Please provide your discord token in _config.yml");
                 return;
             }
-
-            await _client.LoginAsync(TokenType.Bot, token);
-            await _client.StartAsync();
+            await _client.LoginAsync(TokenType.Bot, token).ConfigureAwait(false);
+            await _client.StartAsync().ConfigureAwait(false);
 
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _provider);
         }

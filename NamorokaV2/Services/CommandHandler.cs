@@ -7,18 +7,17 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NamorokaV2.NamorokaCore;
 
 namespace NamorokaV2
 {
-    public class CommandHandler
+    public class CommandHandler : ModuleBase<SocketCommandContext>
     {
         public static IServiceProvider _provider;
         public static DiscordSocketClient _client;
         public static CommandService _commands;
         public static IConfigurationRoot _config;
-        //private readonly DiscordSocketClient client;
-        //private readonly CommandService commands;
-        
+        private SocketMessage message;
 
         public CommandHandler(DiscordSocketClient client, CommandService commands, IConfigurationRoot config, IServiceProvider provider)
         {
@@ -27,6 +26,7 @@ namespace NamorokaV2
             _provider = provider;
             _config = config;
             _client.Ready += OnReady;
+            //_client.Ready += DisplayStartup;
             _client.MessageReceived += HandleCommandAsync;
         }
 
@@ -37,6 +37,24 @@ namespace NamorokaV2
             Console.WriteLine($"{loggingService} initialized properly");
             Console.WriteLine($"Connected as {_client.CurrentUser.Username}#{_client.CurrentUser.Discriminator}");
             return Task.CompletedTask;
+        }
+
+        private static async Task DisplayStartup()
+        {
+            const ulong guildId = ChannelIds.GuildId;
+            const ulong logChannelId = ChannelIds.LogChannelId;
+
+            ITextChannel channel = _client.GetGuild(guildId).GetTextChannel(logChannelId);
+
+            if (channel != null)
+            {
+                await channel.SendMessageAsync(string.Empty, false, new EmbedBuilder()
+                    .WithColor(Color.Green)
+                    .WithTitle("Startup Complete")
+                    .WithDescription($"**NamorokaBot v{Version.FullVersion}** :: **Discord.Net v{Version.DiscordVersion}**")
+                    .Build()
+                );
+            }
         }
 
         private static async Task HandleCommandAsync(SocketMessage messageParam)

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Globalization;
-using System.IO;
+﻿using System.IO;
 using System.Threading.Tasks;
-using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using Microsoft.Extensions.Configuration;
 using NamorokaV2.Attributes;
 using Newtonsoft.Json;
 
@@ -12,17 +10,20 @@ namespace NamorokaV2
 {
     public sealed partial class ConfigModule : ModuleBase<SocketCommandContext>
     {
-        [RequireRole(RoleIds.Administrator)]
+        public static IConfigurationRoot _config;
+
         [Command("prefix")]
         public async Task PrefixAsync(string _prefix)
         {
             SocketUserMessage message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
-            string json = await File.ReadAllTextAsync(JsonService._configJson);
-            dynamic jsonObj = JsonConvert.DeserializeObject(json);
-            jsonObj["prefix"] = _prefix;
-            string output = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
-            await File.WriteAllTextAsync(JsonService._configJson, output);
+            //string json = await File.ReadAllTextAsync(JsonService._configJson);
+            //dynamic jsonObj = JsonConvert.DeserializeObject(json);
+            //jsonObj["prefix"] = _prefix;
+            //string output = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
+            //await File.WriteAllTextAsync(JsonService._configJson, output);
+            _config["prefix"] = _prefix;
+
             
             await Context.Channel.SendMessageAsync($"I changed your prefix to: {_prefix}");
         }

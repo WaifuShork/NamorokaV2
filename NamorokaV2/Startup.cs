@@ -11,8 +11,8 @@ namespace NamorokaV2
 {
     public class Startup
     {
-        private readonly DiscordSocketClient client;
-        private readonly CommandService commands;
+        //private readonly DiscordSocketClient client;
+        //private readonly CommandService commands;
 
         public IConfigurationRoot Configuration { get; }
         
@@ -27,7 +27,7 @@ namespace NamorokaV2
         public static async Task RunAsync(string[] args)
         {
             Startup startup = new Startup(args);
-            await startup.RunAsync();
+            await startup.RunAsync().ConfigureAwait(false);
         }
 
         private async Task RunAsync()
@@ -36,9 +36,9 @@ namespace NamorokaV2
             ConfigureServices(services);
 
             ServiceProvider provider = services.BuildServiceProvider();
-            provider.GetRequiredService<CommandHandler>();
-            await provider.GetRequiredService<StartupService>().StartAsync();
-            await Task.Delay(-1);
+            //provider.GetRequiredService<CommandHandler>();
+            await provider.GetRequiredService<StartupService>().StartAsync().ConfigureAwait(false);
+            await Task.Delay(-1).ConfigureAwait(false);
         }
 
         private void ConfigureServices(IServiceCollection services)
@@ -59,24 +59,6 @@ namespace NamorokaV2
                 .AddSingleton<InteractiveService>()
                 .AddSingleton<StartupService>()
                 .AddSingleton(Configuration);
-        }
-
-        private async Task DisplayStartup()
-        {
-            const ulong guildId = ChannelIds.GuildId;
-            const ulong logChannelId = ChannelIds.LogChannelId;
-
-            ITextChannel channel = client.GetGuild(guildId).GetTextChannel(logChannelId);
-
-            if (channel != null)
-            {
-                await channel.SendMessageAsync(string.Empty, false, new EmbedBuilder()
-                    .WithColor(Color.Green)
-                    .WithTitle("Startup Complete")
-                    .WithDescription($"**NamorokaBot v{Version.FullVersion}** :: **Discord.Net v{Version.DiscordVersion}**")
-                    .Build()
-                );
-            }
         }
     }
 }

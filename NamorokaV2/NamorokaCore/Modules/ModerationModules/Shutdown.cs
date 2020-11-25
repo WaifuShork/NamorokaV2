@@ -1,4 +1,5 @@
-﻿using Discord.Commands;
+﻿using System.Net.Mime;
+using Discord.Commands;
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;

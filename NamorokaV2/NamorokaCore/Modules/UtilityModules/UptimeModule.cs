@@ -18,7 +18,7 @@ namespace NamorokaV2
             await Context.Channel.DeleteMessageAsync(message);
             TimeSpan uptime = DateTime.Now - Process.GetCurrentProcess().StartTime;
 
-            await ReplyAsync($"I've been up and running for {uptime.Humanize(precision: 3, minUnit: TimeUnit.Second)}");
+            await ReplyAsync($"I've been up and running for {uptime.Humanize(3, minUnit: TimeUnit.Second)}");
         }
     }
 }
