@@ -17,13 +17,15 @@ namespace NamorokaV2
             SocketUserMessage message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
             EmbedBuilder builder = new EmbedBuilder();
-            builder.WithAuthor($"[Baned User] {user}", user.GetAvatarUrl());
-            builder.AddField("Reason", reason);
+            builder.WithAuthor($"[Banned User] {user}", user.GetAvatarUrl());
             builder.WithColor(Color.Red);
+            builder.AddField("Reason", reason);
+            builder.AddField("User Responsible", Context.Message.Author);
             builder.WithCurrentTimestamp();
             Embed embed = builder.Build();
+            
             await Context.Guild.AddBanAsync(user);
-            await logsAsync.SendLogMessageAsync(embed);
+            await SendLog(embed);
         }
         
         [RequireUserPermission(GuildPermission.Administrator)]
@@ -35,13 +37,15 @@ namespace NamorokaV2
             SocketUserMessage message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
             EmbedBuilder builder = new EmbedBuilder();
-            builder.WithAuthor($"[Banned User] {user}, user.GetAvatarUrl()");
-            builder.AddField("Reason", reason);
+            builder.WithAuthor($"[Banned User] {user}", user.GetAvatarUrl());
             builder.WithColor(Color.Red);
+            builder.AddField("Reason", reason);
+            builder.AddField("User Responsible", Context.Message.Author);
             builder.WithCurrentTimestamp();
             Embed embed = builder.Build();
+            
             await Context.Guild.AddBanAsync(user);
-            await logsAsync.SendLogMessageAsync(embed);
+            await SendLog(embed);
         }
     }
 }

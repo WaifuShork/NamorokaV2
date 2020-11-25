@@ -3,6 +3,7 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using NamorokaV2.Attributes;
+using NamorokaV2.NamorokaCore;
 
 namespace NamorokaV2
 {
@@ -19,7 +20,7 @@ namespace NamorokaV2
             await Context.Channel.DeleteMessageAsync(message);
             SocketRole role = Context.Guild.GetRole(RoleIds.Muted);
             await ((IGuildUser)user).RemoveRoleAsync(role);
-            await logsAsync.SendLogMessageAsync($"{user} has been unmuted.");
+            //await SendLogsAsync.SendLogMessageAsync($"{user} has been unmuted.");
         }
     }
 }

@@ -3,15 +3,18 @@ using Discord.Commands;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord.WebSocket;
+using Microsoft.Extensions.Configuration;
 
 namespace NamorokaV2
 {
     public class HelpModule : ModuleBase<SocketCommandContext>
     {
         private readonly CommandService _service;
-        public HelpModule(CommandService service)
+        private readonly IConfigurationRoot _config;
+        public HelpModule(CommandService service, IConfigurationRoot config)
         {
             _service = service;
+            _config = config;
         }
 
         [Command("help")]
@@ -20,7 +23,8 @@ namespace NamorokaV2
             SocketUserMessage message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
             ConfigJson configJson = await JsonService.GetConfigJson(JsonService._configJson);
-            string prefix = configJson.Prefix; 
+            //string prefix = configJson.Prefix;
+            string prefix = _config["prefix"];
             EmbedBuilder builder = new EmbedBuilder()
             {
                 Color = new Color(114, 137, 218),

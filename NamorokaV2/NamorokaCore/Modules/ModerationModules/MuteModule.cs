@@ -12,6 +12,7 @@ namespace NamorokaV2
         [Summary("Mutes a user with a specified reason.")]
         [Remarks("-muted <user> <reason>")]
         [RequireContext(ContextType.Guild)]
+        [RequireUserPermission(GuildPermission.MuteMembers)]
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task MuteAsync(IGuildUser user, [Remainder] string reason)
         {
@@ -21,21 +22,23 @@ namespace NamorokaV2
             EmbedBuilder builder = new EmbedBuilder();
             
             builder.WithAuthor($"[Muted User] {user}", user.GetAvatarUrl());
-            builder.AddField("Reason", reason);
             builder.WithColor(Color.Red);
+            builder.AddField("Reason", reason);
+            builder.AddField("User Responsible", Context.Message.Author);
             builder.WithCurrentTimestamp();
             Embed embed = builder.Build();
 
             SocketRole role = Context.Guild.GetRole(RoleIds.Muted);
             await user.AddRoleAsync(role);
             await Context.Channel.SendMessageAsync(embed: embed);
-            await logsAsync.SendLogMessageAsync(embed);
+            await SendLog(embed);
         }
         
         [Command("mute")]
         [Summary("Mutes a user with a specified reason.")]
         [Remarks("-muted <user> <reason>")]
         [RequireContext(ContextType.Guild)]
+        [RequireUserPermission(GuildPermission.MuteMembers)]
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task MuteAsync(IGuildUser user)
         {
@@ -46,15 +49,16 @@ namespace NamorokaV2
             EmbedBuilder builder = new EmbedBuilder();
             
             builder.WithAuthor($"[Muted User] {user}", user.GetAvatarUrl());
-            builder.AddField("Reason", reason);
             builder.WithColor(Color.Red);
+            builder.AddField("Reason", reason);
+            builder.AddField("User Responsible", Context.Message.Author);
             builder.WithCurrentTimestamp();
             Embed embed = builder.Build();
 
             SocketRole role = Context.Guild.GetRole(RoleIds.Muted);
             await user.AddRoleAsync(role);
             await Context.Channel.SendMessageAsync(embed: embed);
-            await logsAsync.SendLogMessageAsync(embed);
+            await SendLog(embed);
         }
     }
 }

@@ -4,11 +4,14 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord.Rest;
+using Discord.WebSocket;
 
 namespace NamorokaV2
 {
     internal class LoggingService
     {
+        private readonly DiscordSocketClient _client = new DiscordSocketClient();
+        private CommandService command;
         internal LoggingService(BaseDiscordClient client, CommandService command)
         {
             client.Log += LogAsync;
@@ -26,6 +29,19 @@ namespace NamorokaV2
                 Console.WriteLine($"[General/{message.Severity}] {message}");
             
             await Task.CompletedTask;
+        }
+        
+        internal async Task SendLogMessageAsync(Embed embed)
+        {
+            const ulong guildId = ChannelIds.GuildId;
+            const ulong logChannelId = ChannelIds.LogChannelId;
+        
+            ITextChannel channel = _client.GetGuild(guildId).GetTextChannel(logChannelId);
+
+            if (channel != null && embed != null)
+            {
+                await channel.SendMessageAsync(embed: embed);
+            }
         }
     }
 }

@@ -21,13 +21,14 @@ namespace NamorokaV2
             EmbedBuilder builder = new EmbedBuilder();
             
             builder.WithAuthor($"[Kicked User] {user}", user.GetAvatarUrl());
-            builder.AddField("Reason", reason);
             builder.WithColor(Color.Red);
+            builder.AddField("Reason", reason);
+            builder.AddField("User Responsible", Context.Message.Author);
             builder.WithCurrentTimestamp();
             Embed embed = builder.Build();
             
             await user.KickAsync();
-            await logsAsync.SendLogMessageAsync(embed);
+            await SendLog(embed);
         }
         
         [RequireUserPermission(GuildPermission.Administrator)]
@@ -41,14 +42,15 @@ namespace NamorokaV2
             
             EmbedBuilder builder = new EmbedBuilder();
             
-            builder.WithAuthor($"[Kicked User] {user}");
-            builder.AddField("Reason", reason);
+            builder.WithAuthor($"[Kicked User] {user}", user.GetAvatarUrl());
             builder.WithColor(Color.Red);
+            builder.AddField("Reason", reason);
+            builder.AddField("User Responsible", Context.Message.Author);
             builder.WithCurrentTimestamp();
             Embed embed = builder.Build();
             
             await user.KickAsync();
-            await logsAsync.SendLogMessageAsync(embed);
+            await SendLog(embed);
         }
     }
 }
