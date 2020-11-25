@@ -5,29 +5,72 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f900b25c-430f-4ec3-84d4-96f5903c2468" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/NamorokaV2/Services/ServiceCollection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.NamorokaV2/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.NamorokaV2/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/NamorokaV2/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/NamorokaV2/v16/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2.sln.DotSettings.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/Database/NamorokaDB.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Configuration/ChannelIds.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Extensions/MessageExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Extensions/PrimitiveExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Extensions/TimeExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Extensions/UserExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/CompountInterestModule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/FizzBuzzModule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/LoggingModules/MessageLoggingModule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Meme.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/BanModule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/InstantiationModule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/NSFW/HentaiModule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UserModules/UserInfoModule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UtilityModules/ConfigModules/ConfigModule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UtilityModules/ConfigModules/LogModule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UtilityModules/ServerInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UtilityModules/SystemTestModule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UtilityModules/UptimeModule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/SendLogsAsync.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/Services/StartupService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/Startup.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/UserModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/_config.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NamorokaV2/app.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NamorokaV2/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NamorokaV2/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NamorokaV2/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_11_12020_00_56_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NamorokaV2/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_11_12020_00_56__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NamorokaV2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NamorokaV2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaBot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaBot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ConfigModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ConfigModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/HelpModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/HelpModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/InfoModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/InfoModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Ban.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Ban.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Clear.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Clear.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/InfractionModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/InfractionModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/KickModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/KickModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Mute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Mute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Shutdown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Shutdown.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Unmute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Unmute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Warn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Warn.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/NicknameModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/NicknameModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/Commands/NamorokaContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/Commands/NamorokaContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaBot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Configuration/RoleIds.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Configuration/RoleIds.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ConfigModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UtilityModules/ConfigModules/PrefixModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/HelpModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UtilityModules/HelpModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/InfoModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UtilityModules/InfoModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Ban.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Clear.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/Clear.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/InfractionModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/KickModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/KickModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Mute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/MuteModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Shutdown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/Shutdown.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Unmute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/UnmuteModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Warn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/WarnModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/NicknameModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UserModules/NicknameModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/NamorokaV2.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/NamorokaV2.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NamorokaV2/Services/CommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/Services/CommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NamorokaV2/Services/LoggingService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/Services/LoggingService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/NamorokaV2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/NamorokaV2.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/NamorokaV2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/NamorokaV2.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/Services/JsonService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/Services/JsonService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/Services/ServiceCollection.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/Debug/netcoreapp3.1/NamorokaV2.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/NamorokaV2.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/NamorokaV2.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NamorokaV2/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/NamorokaV2/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,51 +87,84 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/96/4b6b427a/IMessageChannel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/29C/Assembly.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5C53B794-1A72-42FC-B689-47E6D2F3281F/C/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/2a/adccff5c/IUserMessage.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/Clear.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E44CFFB3-26DD-4EDA-86E4-37A9B9C84FB5/09/bbc9e67c/IServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/UnmuteModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/Shutdown.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/WarnModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/metadata/C37DEB61-84B2-4A35-9787-2466D882C23F/86/f6243642/Discord.Addons.Interactive.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/fb/8068079a/IGuildUser.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/BanModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/MuteModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UserModules/NicknameModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C37DEB61-84B2-4A35-9787-2466D882C23F/cf/787494ac/InteractiveService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BBAA74BA-9221-4C02-86C1-06A1DD2605F1/6f/094ea94d/BaseSocketClient.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/07748561-2722-4130-9BBF-B50D837F391E/96/96755665/RestRole.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C37DEB61-84B2-4A35-9787-2466D882C23F/2d/8fbecff5/InteractiveServiceConfig.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8D30A3FA-A946-4590-B830-42107ECCC8C9/85/ServiceContainer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/NamorokaV2/Services/JsonService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/NamorokaV2/Services/CommandHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Ban.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/96/4b6b427a/IMessageChannel.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2E593DFC-4324-4392-82E7-79652EBB8125/2a/adccff5c/IUserMessage.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/NicknameModule.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Clear.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5C53B794-1A72-42FC-B689-47E6D2F3281F/C/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Unmute.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Warn.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Shutdown.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Mute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AD1AF175-F8B1-405D-8B70-29001605F5E4/62/472ace6b/PreconditionAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C37DEB61-84B2-4A35-9787-2466D882C23F/b3/5631fd0c/InteractiveBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/CF282CE3-4F26-42B6-A4F6-AEA54335F8C8/C/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaV2.csproj" />
-      <option value="$PROJECT_DIR$/NamorokaV2/Version.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/logs/infractions.json" />
-      <option value="$PROJECT_DIR$/NamorokaV2/Services/Initialize.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/DatabaseModule.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/EightBallAnswer.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/CsharpiEntities.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Extensions/UserExtensions.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UserInfoModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/InfoModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/SystemTestModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UtilityModules/SystemTestModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/FizzBuzzModule.cs" />
+      <option value="$PROJECT_DIR$/README.md" />
+      <option value="$PROJECT_DIR$/NamorokaV2/Interactivity/InteractiveService.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/Services/InteractiveService.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/InteractiveBase.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/InteractiveTest.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/Services/ServiceCollection.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Configuration/RoleIds.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/InfractionModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UtilityModules/InfoModule.cs" />
       <option value="$PROJECT_DIR$/NamorokaV2/Services/JsonService.cs" />
       <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Attributes/RequireRoleAttribute.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Configuration/RoleIds.cs" />
-      <option value="$PROJECT_DIR$/README.md" />
-      <option value="$PROJECT_DIR$/NamorokaV2/Program.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/Services/LoggingService.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/Services/CommandHandler.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaBot.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/Services/ServiceCollection.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Ban.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Clear.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/ClearMessage.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/NicknameModule.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/HelpModule.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ConfigModule.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Warn.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Unmute.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Shutdown.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/Mute.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/KickModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UtilityModules/ConfigModules/PrefixModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UtilityModules/ConfigModules/LogModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UtilityModules/ConfigModules/ConfigModule.cs" />
       <option value="$PROJECT_DIR$/NamorokaV2/bin/Debug/netcoreapp3.1/configuration/config.json" />
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/InfoModule.cs" />
-      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Moderation/InfractionModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/Commands/NamorokaContext.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Configuration/ChannelIds.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/LoggingModules/MessageLoggingModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/AudioModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/Services/InitializeService.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/app.config" />
+      <option value="$PROJECT_DIR$/NamorokaV2/UserModel.cs" />
+      <option value="$APPLICATION_CONFIG_DIR$/consoles/db/420b9347-77aa-40bc-afb8-1ddfe8aae897/console.sql" />
+      <option value="$PROJECT_DIR$/NamorokaV2/SqliteDataAccess.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/InfractionModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/Mute.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/Warn.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/Ban.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/Unmute.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/MuteModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/KickModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/BanModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/WarnModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/ModerationModules/InstantiationModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/SendLogsAsync.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/Program.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaBot.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/_config.yml" />
+      <option value="$PROJECT_DIR$/NamorokaV2/Services/StartupService.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/CompountInterestModule.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/Startup.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/Services/CommandHandler.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/UtilityModules/ServerInfo.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/Meme.cs" />
+      <option value="$PROJECT_DIR$/NamorokaV2/NamorokaCore/Modules/NSFW/HentaiModule.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jrIhK1v5tRDFdBzQD1uCGeTsdy" />
@@ -101,10 +177,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql&#10;mongo&#10;sqlite" />
     <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34979758" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -112,7 +190,9 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalDependencies" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -151,7 +231,25 @@
       <workItem from="1604570124234" duration="1170000" />
       <workItem from="1604611125079" duration="349000" />
       <workItem from="1604612271158" duration="155000" />
-      <workItem from="1604613554804" duration="7989000" />
+      <workItem from="1604613554804" duration="19031000" />
+      <workItem from="1604641243038" duration="2572000" />
+      <workItem from="1604647283061" duration="24000" />
+      <workItem from="1604724758414" duration="37000" />
+      <workItem from="1604792767616" duration="2595000" />
+      <workItem from="1604804860424" duration="410000" />
+      <workItem from="1604812404945" duration="32000" />
+      <workItem from="1604812461893" duration="58000" />
+      <workItem from="1604875181014" duration="8597000" />
+      <workItem from="1605828787049" duration="7700000" />
+      <workItem from="1605836558856" duration="7279000" />
+      <workItem from="1605845760134" duration="224000" />
+      <workItem from="1605846004157" duration="42000" />
+      <workItem from="1605846215759" duration="3188000" />
+      <workItem from="1605854581748" duration="23000" />
+      <workItem from="1606090798943" duration="20000" />
+      <workItem from="1606092498525" duration="1439000" />
+      <workItem from="1606104020231" duration="8158000" />
+      <workItem from="1606112217565" duration="296000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1604556632245</created>
@@ -188,7 +286,28 @@
       <option name="project" value="LOCAL" />
       <updated>1604612292051</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Updated commands to delete users sent message">
+      <created>1604622587220</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1604622587220</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added service provider">
+      <created>1604622601922</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1604622601922</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Updated the readme to be extra special">
+      <created>1604625600696</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1604625600696</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,7 +320,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="dev" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -214,6 +345,9 @@
     <MESSAGE value="gitignore update again.." />
     <MESSAGE value="init" />
     <MESSAGE value="gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
+    <MESSAGE value="Updated commands to delete users sent message" />
+    <MESSAGE value="Added service provider" />
+    <MESSAGE value="Updated the readme to be extra special" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the readme to be extra special" />
   </component>
 </project>

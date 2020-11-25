@@ -1,9 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.ComponentModel.Design;
+using System.Threading.Tasks;
+using Discord.Commands;
+using Discord.WebSocket;
 
 namespace NamorokaV2
 {
     internal static class Program
     {
-        internal static async Task Main() => await new NamorokaBot().RunAsync();
+        private static async Task Main(string[] args) => await Startup.RunAsync(args).ConfigureAwait(false);
     }
 }

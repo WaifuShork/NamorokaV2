@@ -6,12 +6,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Discord.Addons.Hosting" Version="3.0.0" />
-      <PackageReference Include="Discord.Net" Version="2.2.0" />
-      <PackageReference Include="libsodium" Version="1.0.18" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0-rc.2.20475.6" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0-rc.2.20475.5" />
+      <PackageReference Include="Dapper" Version="2.0.78" />
+      <PackageReference Include="Discord.Addons.Hosting" Version="3.1.0" />
+      <PackageReference Include="Discord.Addons.Interactive" Version="2.0.0" />
+      <PackageReference Include="Discord.Net" Version="2.3.0-dev-20201119.4" />
+      <PackageReference Include="Humanizer.Core" Version="2.8.26" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />
       <PackageReference Include="NetEscapades.Configuration.Yaml" Version="2.0.1" />
+      <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
       <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
          <!--<PackageReference Include="UmbracoCms.Core" Version="8.9.0" />
          <PackageReference Include="Xabe.FFmpeg" Version="4.3.1" />-->
@@ -19,6 +23,16 @@
 
     <ItemGroup>
       <Folder Include="NamorokaCore\Models" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Database\NamorokaDB.db" />
+      <Content Include="Database\NamorokaDB.db">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <None Update="_config.yml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

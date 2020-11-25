@@ -1,48 +1,77 @@
 ﻿using System;
 using System.Reflection;
 using System.Threading.Tasks;
+using Discord;
+using Discord.Addons.Interactive;
 using Discord.Commands;
 using Discord.WebSocket;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using NamorokaV2.NamorokaCore;
 
 namespace NamorokaV2
 {
-    internal class CommandHandler
+    public class CommandHandler : ModuleBase<SocketCommandContext>
     {
-        private readonly DiscordSocketClient _client;
-        private readonly CommandService _commands;
-        private readonly IServiceProvider _services;
-        
-        internal CommandHandler(DiscordSocketClient client, CommandService commands, IServiceProvider services)
+        public static IServiceProvider _provider;
+        public static DiscordSocketClient _client;
+        public static CommandService _commands;
+        public static IConfigurationRoot _config;
+        private SocketMessage message;
+
+        public CommandHandler(DiscordSocketClient client, CommandService commands, IConfigurationRoot config, IServiceProvider provider)
         {
             _commands = commands;
             _client = client;
-            _services = services;
-        }
-
-        internal async Task InstallCommandsAsync()
-        {
+            _provider = provider;
+            _config = config;
+            _client.Ready += OnReady;
+            //_client.Ready += DisplayStartup;
             _client.MessageReceived += HandleCommandAsync;
-
-            await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
         }
-        
-        private async Task HandleCommandAsync(SocketMessage messageParam)
+
+        private static Task OnReady()
         {
-            ConfigJson configJson = await JsonService.GetConfigJson(JsonService._configJson);
+            LoggingService loggingService = new LoggingService(_client, _commands);
             
+            Console.WriteLine($"{loggingService} initialized properly");
+            Console.WriteLine($"Connected as {_client.CurrentUser.Username}#{_client.CurrentUser.Discriminator}");
+            return Task.CompletedTask;
+        }
+
+        private static async Task DisplayStartup()
+        {
+            const ulong guildId = ChannelIds.GuildId;
+            const ulong logChannelId = ChannelIds.LogChannelId;
+
+            ITextChannel channel = _client.GetGuild(guildId).GetTextChannel(logChannelId);
+
+            if (channel != null)
+            {
+                await channel.SendMessageAsync(string.Empty, false, new EmbedBuilder()
+                    .WithColor(Color.Green)
+                    .WithTitle("Startup Complete")
+                    .WithDescription($"**NamorokaBot v{Version.FullVersion}** :: **Discord.Net v{Version.DiscordVersion}**")
+                    .Build()
+                );
+            }
+        }
+
+        private static async Task HandleCommandAsync(SocketMessage messageParam)
+        {
             SocketUserMessage message = (SocketUserMessage) messageParam;
             if (message == null) return;
             
             int argPos = 0;
-            if (!(message.HasStringPrefix(configJson.Prefix, ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos)) || message.Author.IsBot)
+            if (!(message.HasStringPrefix(_config["prefix"], ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos)) || message.Author.IsBot)
                 return;
             
             SocketCommandContext context = new SocketCommandContext(_client, message);
             
-            IResult result = await _commands.ExecuteAsync(context, argPos, _services);
+            IResult result = await _commands.ExecuteAsync(context, argPos, _provider);
 
             if (!result.IsSuccess)
-                await context.Channel.SendMessageAsync(result.ErrorReason);
+                await context.Channel.SendMessageAsync($"The following error has occurred:\n{result.ErrorReason}");
         }
     }
 }
