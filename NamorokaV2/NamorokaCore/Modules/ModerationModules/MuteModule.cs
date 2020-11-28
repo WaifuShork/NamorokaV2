@@ -3,6 +3,7 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using NamorokaV2.Attributes;
+using NamorokaV2.NamorokaCore.Extensions;
 
 namespace NamorokaV2
 {
@@ -31,7 +32,7 @@ namespace NamorokaV2
             SocketRole role = Context.Guild.GetRole(RoleIds.Muted);
             await user.AddRoleAsync(role);
             await Context.Channel.SendMessageAsync(embed: embed);
-            await SendLog(embed);
+            await Extensions.SendLogMessageAsync(embed);
         }
         
         [Command("mute")]
@@ -58,7 +59,7 @@ namespace NamorokaV2
             SocketRole role = Context.Guild.GetRole(RoleIds.Muted);
             await user.AddRoleAsync(role);
             await Context.Channel.SendMessageAsync(embed: embed);
-            await SendLog(embed);
+            await Extensions.SendLogMessageAsync(embed);
         }
     }
 }

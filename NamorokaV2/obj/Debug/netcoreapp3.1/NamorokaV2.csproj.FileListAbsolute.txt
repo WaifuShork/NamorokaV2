@@ -164,8 +164,6 @@ G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\System.Compon
 G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\Humanizer.dll
 G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\Discord.Addons.Interactive.dll
-G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\Database\NamorokaDB.db
-G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\NamorokaV2.dll.config
 G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\Dapper.dll
 G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
 G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
@@ -184,3 +182,18 @@ G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\runtimes\unix
 G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\_config.yml
+G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\Microsoft.Win32.Registry.dll
+G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\Microsoft.Win32.Registry.dll
+G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\DnsClient.dll
+G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\MongoDB.Bson.dll
+G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\MongoDB.Driver.dll
+G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\MongoDB.Driver.Core.dll
+G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\MongoDB.LibMongocrypt.dll
+G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\SharpCompress.dll
+G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\runtimes\win\native\libzstd.dll
+G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy32.dll
+G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy64.dll
+G:\source\NamorokaV2\NamorokaV2\NamorokaV2\bin\Debug\netcoreapp3.1\runtimes\win\native\mongocrypt.dll

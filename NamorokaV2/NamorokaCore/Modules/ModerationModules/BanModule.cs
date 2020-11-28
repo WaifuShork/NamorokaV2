@@ -1,7 +1,9 @@
 ﻿using System.Threading.Tasks;
+using System.Xml.Linq;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using Extensions = NamorokaV2.NamorokaCore.Extensions.Extensions;
 
 namespace NamorokaV2
 {
@@ -25,7 +27,7 @@ namespace NamorokaV2
             Embed embed = builder.Build();
             
             await Context.Guild.AddBanAsync(user);
-            await SendLog(embed);
+            await Extensions.SendLogMessageAsync(embed);
         }
         
         [RequireUserPermission(GuildPermission.Administrator)]
@@ -45,7 +47,7 @@ namespace NamorokaV2
             Embed embed = builder.Build();
             
             await Context.Guild.AddBanAsync(user);
-            await SendLog(embed);
+            await Extensions.SendLogMessageAsync(embed);
         }
     }
 }

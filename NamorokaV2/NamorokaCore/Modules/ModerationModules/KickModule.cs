@@ -3,6 +3,7 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using NamorokaV2.NamorokaCore;
+using NamorokaV2.NamorokaCore.Extensions;
 
 namespace NamorokaV2
 {
@@ -28,7 +29,7 @@ namespace NamorokaV2
             Embed embed = builder.Build();
             
             await user.KickAsync();
-            await SendLog(embed);
+            await Extensions.SendLogMessageAsync(embed);
         }
         
         [RequireUserPermission(GuildPermission.Administrator)]
@@ -50,7 +51,7 @@ namespace NamorokaV2
             Embed embed = builder.Build();
             
             await user.KickAsync();
-            await SendLog(embed);
+            await Extensions.SendLogMessageAsync(embed);
         }
     }
 }
