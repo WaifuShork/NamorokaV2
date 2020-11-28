@@ -6,15 +6,23 @@
     <e p="C:\Users\ashle\AppData\Roaming\JetBrains\Rider2020.3\consoles\db" t="IncludeRecursive" />
     <e p="C:\Users\ashle\AppData\Roaming\JetBrains\Rider2020.3\Extensions" t="IncludeRecursive" />
     <e p="G:\source\NamorokaV2\NamorokaV2" t="IncludeFlat">
+      <e p="NamorokaContext" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="NamorokaContext.cs" t="Include" />
+        <e p="NamorokaContext.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net5.0" t="Include">
+              <e p="NamorokaContext.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="NamorokaV2" t="IncludeRecursive">
         <e p="_config.yml" t="Include" />
-        <e p="app.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Commands" t="Include">
           <e p="NamorokaContext.cs" t="Include" />
-        </e>
-        <e p="Database" t="Include">
-          <e p="NamorokaDB.db" t="Include" />
         </e>
         <e p="NamorokaCore" t="Include">
           <e p="Attributes" t="Include">
@@ -26,23 +34,20 @@
             <e p="RoleIds.cs" t="Include" />
           </e>
           <e p="Extensions" t="Include">
+            <e p="Extensions.cs" t="Include" />
             <e p="MessageExtensions.cs" t="Include" />
             <e p="PrimitiveExtensions.cs" t="Include" />
+            <e p="SendLogsAsync.cs" t="Include" />
             <e p="TimeExtensions.cs" t="Include" />
             <e p="UserExtensions.cs" t="Include" />
           </e>
-          <e p="Models" t="Include" />
           <e p="Modules" t="Include">
             <e p="CompountInterestModule.cs" t="Include" />
             <e p="FizzBuzzModule.cs" t="Include" />
-            <e p="LoggingModules" t="Include">
-              <e p="MessageLoggingModule.cs" t="Include" />
-            </e>
             <e p="Meme.cs" t="Include" />
             <e p="ModerationModules" t="Include">
               <e p="BanModule.cs" t="Include" />
-              <e p="Clear.cs" t="Include" />
-              <e p="InstantiationModule.cs" t="Include" />
+              <e p="ClearModule.cs" t="Include" />
               <e p="KickModule.cs" t="Include" />
               <e p="MuteModule.cs" t="Include" />
               <e p="Shutdown.cs" t="Include" />
@@ -69,7 +74,6 @@
               <e p="UptimeModule.cs" t="Include" />
             </e>
           </e>
-          <e p="SendLogsAsync.cs" t="Include" />
           <e p="TypeReaders" t="Include">
             <e p="BooleanTypeReader.cs" t="Include" />
           </e>
@@ -77,7 +81,7 @@
         <e p="NamorokaV2.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netcoreapp3.1" t="Include">
+            <e p="net5.0" t="Include">
               <e p="NamorokaV2.AssemblyInfo.cs" t="Include" />
             </e>
           </e>

@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="RIDER_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$/../.." />
+    <content url="file://$MODULE_DIR$/../..">
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
+      <excludeFolder url="file://$MODULE_DIR$/../../NamorokaContext/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../NamorokaContext/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../NamorokaV2/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../NamorokaV2/obj/Debug/net5.0" />
+      <excludeFolder url="file://$MODULE_DIR$/../../NamorokaV2/obj/Release" />
+    </content>
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

@@ -1,10 +1,7 @@
-﻿using System.Net.Sockets;
-using Discord.Commands;
+﻿using Discord.Commands;
 using Discord.WebSocket;
 using System.Threading.Tasks;
 using Discord;
-using NamorokaV2.Attributes;
-using NamorokaV2.NamorokaCore;
 using NamorokaV2.NamorokaCore.Extensions;
 
 namespace NamorokaV2
@@ -31,7 +28,7 @@ namespace NamorokaV2
             
             Embed embed = builder.Build();
 
-            await SendLog(embed);
+            await Extensions.SendLogMessageAsync(embed);
             await Context.Channel.SendMessageAsync(embed: embed);
             SocketUserMessage message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
@@ -55,12 +52,10 @@ namespace NamorokaV2
             builder.WithCurrentTimestamp();
             Embed embed = builder.Build();
 
-            await SendLog(embed);
+            await Extensions.SendLogMessageAsync(embed);
             await Context.Channel.SendMessageAsync(embed: embed);
             SocketUserMessage message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
         }
-
-        
-    }
+    }   
 }

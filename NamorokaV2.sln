@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NamorokaV2", "NamorokaV2\NamorokaV2.csproj", "{10349A89-A098-472E-ADAC-2708FB43FCC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NamorokaContext", "NamorokaContext\NamorokaContext.csproj", "{9D820B8D-AB73-4F0C-B3C3-5FD2C327CDE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{10349A89-A098-472E-ADAC-2708FB43FCC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10349A89-A098-472E-ADAC-2708FB43FCC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10349A89-A098-472E-ADAC-2708FB43FCC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D820B8D-AB73-4F0C-B3C3-5FD2C327CDE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D820B8D-AB73-4F0C-B3C3-5FD2C327CDE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D820B8D-AB73-4F0C-B3C3-5FD2C327CDE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D820B8D-AB73-4F0C-B3C3-5FD2C327CDE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
