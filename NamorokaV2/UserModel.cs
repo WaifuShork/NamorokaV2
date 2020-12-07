@@ -1,13 +1,10 @@
-﻿namespace NamorokaV2
-{
-    public class UserModel
-    {
-        public int UserId { get; set; }
-        
-        public string Reason { get; set; }
-        
-        public int InfractionId { get; set; }
+﻿using System.Collections.Generic;
 
-        public string FullUser => $"{UserId.ToString()}";
+namespace NamorokaV2
+{
+    public class User
+    {
+        public ulong Id { get; set; }
+        public List<string> Reason { get; set; }
     }
 }
