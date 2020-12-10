@@ -16,7 +16,7 @@ namespace NamorokaV2
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task InfractionAsync(SocketGuildUser user)
         {
-            List<string> items = DatabaseService.RetrieveFromDatabase(user);
+            IEnumerable<string> items = DatabaseService.RetrieveFromDatabase(user);
             EmbedBuilder builder = new EmbedBuilder();
             
             builder.WithAuthor($"[Spotlight User] {user}", user.GetAvatarUrl());
@@ -34,6 +34,17 @@ namespace NamorokaV2
             await Context.Channel.SendMessageAsync(embed: embed);
             SocketUserMessage message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
+        }
+        
+        [Command("clear-infr"), Priority(1)]
+        [RequireContext(ContextType.Guild)]
+        [RequireUserPermission(GuildPermission.MuteMembers)]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        public async Task ClearInfractionAsync(SocketGuildUser user)
+        {
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
+            await DatabaseService.RemoveUserReasonsAsync(user);
         }
     }   
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Discord.WebSocket;
 using Newtonsoft.Json;
 
@@ -10,15 +11,16 @@ namespace NamorokaV2
 {
     public static class DatabaseService
     {
-        private const string data = @"G:\source\NamorokaV2\NamorokaV2\NamorokaV2\database.json";
+        private const string data = @"..\..\..\database.json";
 
-        public static void AddToDatabase(SocketGuildUser user, string reason)
+        public static async Task AddToDatabase(SocketGuildUser user, string reason)
         {
-            SearchForUser(user, reason);
+            await SearchForUser(user, reason);
         }
-        public static void AddToDatabase(SocketGuildUser user)
+
+        public static async Task AddToDatabase(SocketGuildUser user)
         {
-            SearchForUser(user);
+            await SearchForUser(user);
         }
 
         public static IEnumerable<string> RetrieveFromDatabase(SocketGuildUser user)
@@ -34,47 +36,69 @@ namespace NamorokaV2
         }
 
         // Overload for no reason given
-        private static void SearchForUser(SocketGuildUser user)
+        private static async Task SearchForUser(SocketGuildUser user)
         {
-            string initializeJson = File.ReadAllText(data);
+            string initializeJson = await File.ReadAllTextAsync(data);
             List<User> users = JsonConvert.DeserializeObject<List<User>>(initializeJson);
             ulong userId = user.Id;
             IEnumerable<User> filteredUsers = users.Where(u => u.Id == userId);
-            if(filteredUsers.Count() != 0)
-            {   
-                User selectedUser = filteredUsers.First();
-                
+            IEnumerable<User> enumerable = filteredUsers.ToList();
+            if (enumerable.Any())
+            {
+                User selectedUser = enumerable.First();
                 users.Remove(selectedUser);
                 selectedUser.Reason.Add("There was no given reason for this warning");
                 users.Add(selectedUser);
             }
             else
             {
-                users.Add(new User { Id = userId, Reason = new List<string>() { "There was no given reason for this warning" } });
+                users.Add(new User
+                    {Id = userId, Reason = new List<string>() {"There was no given reason for this warning"}});
             }
+
             string json = JsonConvert.SerializeObject(users, Formatting.Indented);
-            File.WriteAllText(data, json);
+            await File.WriteAllTextAsync(data, json);
         }
+
         // Overload for reason given
-        private static void SearchForUser(SocketGuildUser user, string reason)
+        private static async Task SearchForUser(SocketGuildUser user, string reason)
         {
-            string initializeJson = File.ReadAllText(data);
+            string initializeJson = await File.ReadAllTextAsync(data);
             List<User> users = JsonConvert.DeserializeObject<List<User>>(initializeJson);
             ulong userId = user.Id;
             IEnumerable<User> filteredUsers = users.Where(u => u.Id == userId);
-            if(filteredUsers.Count() != 0)
-            {   
-                User selectedUser = filteredUsers.First();
+            IEnumerable<User> enumerable = filteredUsers.ToList();
+            if (enumerable.Any())
+            {
+                User selectedUser = enumerable.First();
                 users.Remove(selectedUser);
-                selectedUser.Reason.Add(reason); 
+                selectedUser.Reason.Add(reason);
                 users.Add(selectedUser);
             }
             else
             {
-                users.Add(new User { Id = userId, Reason = new List<string>() { reason } });
+                users.Add(new User {Id = userId, Reason = new List<string>() {reason}});
             }
+
             string json = JsonConvert.SerializeObject(users, Formatting.Indented);
-            File.WriteAllText(data, json);
+            await File.WriteAllTextAsync(data, json);
+        }
+
+        public static async Task RemoveUserReasonsAsync(SocketGuildUser user/*, int infractionId*/)
+        {
+            string initializeJson = await File.ReadAllTextAsync(data);
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(initializeJson);
+            ulong userId = user.Id;
+            IEnumerable<User> filteredUsers = users.Where(u => u.Id == userId);
+            IEnumerable<User> enumerable = filteredUsers.ToList();
+            if (enumerable.Any())
+            {
+                User selectedUser = enumerable.First();
+                users.Remove(selectedUser);
+            }
+
+            string json = JsonConvert.SerializeObject(users, Formatting.Indented);
+            await File.WriteAllTextAsync(data, json);
         }
     }
 }

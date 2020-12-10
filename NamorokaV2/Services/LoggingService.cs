@@ -10,10 +10,10 @@ namespace NamorokaV2
 {
     internal class LoggingService
     {
-        private readonly DiscordSocketClient _client = new DiscordSocketClient();
-        private CommandService command;
-        internal LoggingService(BaseDiscordClient client, CommandService command)
+        private readonly DiscordSocketClient client;
+        internal LoggingService(DiscordSocketClient client, CommandService command)
         {
+            this.client = client;
             client.Log += LogAsync;
             command.Log += LogAsync;
         }
@@ -36,7 +36,7 @@ namespace NamorokaV2
             const ulong guildId = ChannelIds.GuildId;
             const ulong logChannelId = ChannelIds.LogChannelId;
         
-            ITextChannel channel = _client.GetGuild(guildId).GetTextChannel(logChannelId);
+            ITextChannel channel = client.GetGuild(guildId).GetTextChannel(logChannelId);
 
             if (channel != null && embed != null)
             {
