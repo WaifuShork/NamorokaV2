@@ -12,7 +12,7 @@ namespace NamorokaV2
     public class StartupService
     {
         private static IServiceProvider _provider;
-        public static DiscordSocketClient _client;
+        private static DiscordSocketClient _client;
         private readonly CommandService _commands;
         private readonly IConfigurationRoot _config;
 

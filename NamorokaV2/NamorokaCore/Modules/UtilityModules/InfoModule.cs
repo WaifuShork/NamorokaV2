@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Timers;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
@@ -123,7 +124,15 @@ namespace NamorokaV2
             await Context.Channel.DeleteMessageAsync(message);
             await Context.Channel.SendMessageAsync("I'M SORRY MY PUSSY IS SO TIGHT AND JUICY AND SOUNDS LIKE MACARONI & CHEESE IT'S NOT MY FAULT <@329502393672663042>");
         }
-
         
+        [Command("zoop")]
+        public async Task ZoopAsync()
+        {
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
+            await ReplyAsync("This is");
+            await Task.Delay(2000);
+            await ReplyAsync("a test");
+        }
     }
 }  

@@ -8,35 +8,49 @@ using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NamorokaV2.NamorokaCore;
+using Victoria;
 
 namespace NamorokaV2
 {
     public class CommandHandler : ModuleBase<SocketCommandContext>
     {
-        public static IServiceProvider _provider;
+        private static IServiceProvider _provider;
         public static DiscordSocketClient _client;
-        public static CommandService _commands;
-        public static IConfigurationRoot _config;
+        private static CommandService _commands;
+        private static IConfigurationRoot _config;
+        private static LavaNode _lavaNode;
+
+        //public static DiscordSocketClient Client { get; private set; }
+        
         private SocketMessage message;
 
-        public CommandHandler(DiscordSocketClient client, CommandService commands, IConfigurationRoot config, IServiceProvider provider)
+        public CommandHandler(DiscordSocketClient client, CommandService commands, IConfigurationRoot config, IServiceProvider provider, LavaNode lavaNode)
         {
-            _commands = commands;
             _client = client;
+
+            _lavaNode = lavaNode;
+            _commands = commands;
             _provider = provider;
             _config = config;
             _client.Ready += OnReady;
-            //_client.Ready += DisplayStartup;
             _client.MessageReceived += HandleCommandAsync;
+            
+            //_client.Ready += DisplayStartup;
+
         }
 
-        private static Task OnReady()
+        private static async Task OnReady()
         {
-            LoggingService loggingService = new LoggingService(_client, _commands);
+            if (!_lavaNode.IsConnected)
+            {
+                await _lavaNode.ConnectAsync();
+            }
             
-            Console.WriteLine($"{loggingService} initialized properly");
+            //LoggingService loggingService = new(_client, _commands);
+            
+            //Console.WriteLine($"{loggingService} initialized properly");
             Console.WriteLine($"Connected as {_client.CurrentUser.Username}#{_client.CurrentUser.Discriminator}");
-            return Task.CompletedTask;
+            await Task.CompletedTask;
         }
 
         private static async Task DisplayStartup()

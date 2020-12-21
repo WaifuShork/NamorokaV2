@@ -6,13 +6,12 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Victoria;
 
 namespace NamorokaV2
 {
     public class Startup
     {
-        //private readonly DiscordSocketClient client;
-        //private readonly CommandService commands;
 
         public IConfigurationRoot Configuration { get; }
         
@@ -32,12 +31,12 @@ namespace NamorokaV2
 
         private async Task RunAsync()
         {
-            ServiceCollection services = new ServiceCollection();
+            ServiceCollection services = new();
             ConfigureServices(services);
 
             ServiceProvider provider = services.BuildServiceProvider();
-            //provider.GetRequiredService<CommandHandler>();
             await provider.GetRequiredService<StartupService>().StartAsync().ConfigureAwait(false);
+            
             await Task.Delay(-1).ConfigureAwait(false);
         }
 
@@ -57,6 +56,10 @@ namespace NamorokaV2
                 }))
                 .AddSingleton<CommandHandler>()
                 .AddSingleton<InteractiveService>()
+                .AddLavaNode(x =>
+                {
+                    x.SelfDeaf = false;
+                })
                 .AddSingleton<StartupService>()
                 .AddSingleton(Configuration);
         }
