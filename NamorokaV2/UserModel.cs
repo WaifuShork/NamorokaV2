@@ -2,7 +2,7 @@
 
 namespace NamorokaV2
 {
-    public class User
+    public class UserModel
     {
         public ulong Id { get; set; }
         public List<string> Reason { get; set; }

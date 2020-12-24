@@ -18,7 +18,7 @@ namespace NamorokaV2
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task Warn(SocketGuildUser user, [Remainder] string reason)
         {
-            DatabaseService.AddToDatabase(user, reason);
+            //DatabaseService.AddUserToDatabase(user, reason);
             EmbedBuilder builder = new EmbedBuilder();
             
             builder.WithAuthor($"[Warned User] {user}", user.GetAvatarUrl());
@@ -42,9 +42,10 @@ namespace NamorokaV2
         [RequireUserPermission(GuildPermission.MuteMembers)]
 
         [RequireUserPermission(GuildPermission.Administrator)]
-        public async Task Warn(SocketGuildUser user)
+        public async Task Warn(IGuildUser user)
         {
-            DatabaseService.AddToDatabase(user);
+            //DatabaseService.AddToDatabase(user);
+            DatabaseService.SearchDatabaseForUser(user);
             const string reason = "None";
             EmbedBuilder builder = new EmbedBuilder();
             builder.WithAuthor($"[Warned User] {user}", user.GetAvatarUrl());

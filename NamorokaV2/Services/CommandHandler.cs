@@ -20,10 +20,6 @@ namespace NamorokaV2
         private static IConfigurationRoot _config;
         private static LavaNode _lavaNode;
 
-        //public static DiscordSocketClient Client { get; private set; }
-        
-        private SocketMessage message;
-
         public CommandHandler(DiscordSocketClient client, CommandService commands, IConfigurationRoot config, IServiceProvider provider, LavaNode lavaNode)
         {
             _client = client;
@@ -36,7 +32,6 @@ namespace NamorokaV2
             _client.MessageReceived += HandleCommandAsync;
             
             //_client.Ready += DisplayStartup;
-
         }
 
         private static async Task OnReady()
@@ -46,9 +41,6 @@ namespace NamorokaV2
                 await _lavaNode.ConnectAsync();
             }
             
-            //LoggingService loggingService = new(_client, _commands);
-            
-            //Console.WriteLine($"{loggingService} initialized properly");
             Console.WriteLine($"Connected as {_client.CurrentUser.Username}#{_client.CurrentUser.Discriminator}");
             await Task.CompletedTask;
         }

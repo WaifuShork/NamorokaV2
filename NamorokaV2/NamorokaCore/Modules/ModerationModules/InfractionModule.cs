@@ -16,17 +16,17 @@ namespace NamorokaV2
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task InfractionAsync(SocketGuildUser user)
         {
-            IEnumerable<string> items = DatabaseService.RetrieveFromDatabase(user);
+            //IEnumerable<string> items = DatabaseService.RetrieveFromDatabase(user);
             EmbedBuilder builder = new EmbedBuilder();
             
             builder.WithAuthor($"[Spotlight User] {user}", user.GetAvatarUrl());
             builder.WithColor(Color.Red);
             builder.WithCurrentTimestamp();
             builder.AddField("Reasons", "----------");
-            foreach (string reason in items)
+            /*foreach (string reason in items)
             {
                 builder.AddField("\u200b", reason);
-            }
+            }*/
 
             
             Embed embed = builder.Build();
@@ -44,7 +44,7 @@ namespace NamorokaV2
         {
             SocketUserMessage message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
-            await DatabaseService.RemoveUserReasonsAsync(user);
+            //await DatabaseService.RemoveUserReasonsAsync(user);
         }
     }   
 }
