@@ -12,17 +12,14 @@ namespace NamorokaV2
         [RequireNsfw]
         public async Task SendHentaiAsync()
         {
-        //random.json?limit=1
-            HttpClient client = new HttpClient();
-            string result = await client.GetStringAsync("https://rule34.xxx/index.php");
-            JArray arr = JArray.Parse(result);
-            JObject post = JObject.Parse(arr[0]["data"]["children"][0]["data"].ToString());
-            EmbedBuilder builder = new EmbedBuilder()
+            var client = new HttpClient();
+            var result = await client.GetStringAsync("https://www.reddit.com/r/hentai/random.json?limit=1");
+            var arr = JArray.Parse(result);
+            var post = JObject.Parse(arr[0]["data"]["children"][0]["data"].ToString());
+            var builder = new EmbedBuilder()
                 .WithImageUrl(post["url"].ToString())
-                .WithColor(new Color(33, 176, 252))
-                .WithTitle(post["title"].ToString());
-                //.WithUrl("https://reddit.com" + post["permalink"]);
-            Embed embed = builder.Build();
+                .WithColor(new Color(33, 176, 252));
+            var embed = builder.Build();
             await Context.Channel.SendMessageAsync(embed: embed);
         }
     }
