@@ -8,16 +8,16 @@ namespace NamorokaV2.NamorokaCore
 {
     internal static class SendLogsAsync
     {
-        private static readonly DiscordSocketClient client = new DiscordSocketClient();
+        private static readonly DiscordSocketClient client = new();
         internal static async Task<IMessage> SendLogMessageAsync(this ISocketMessageChannel socketChannel, string messageString)
         {
             
             const ulong guildId = ChannelIds.GuildId;
             const ulong logChannelId = ChannelIds.LogChannelId;
         
-            ITextChannel channel = client.GetGuild(guildId).GetTextChannel(logChannelId);
+            var channel = client.GetGuild(guildId).GetTextChannel(logChannelId);
 
-            IUserMessage message = await channel.SendMessageAsync(messageString);
+            var message = await channel.SendMessageAsync(messageString);
             return message;
         }
         
@@ -28,7 +28,7 @@ namespace NamorokaV2.NamorokaCore
         
             channel = client.GetGuild(guildId).GetTextChannel(logChannelId);
 
-            IUserMessage message = await channel.SendMessageAsync(embed: embed);
+            var message = await channel.SendMessageAsync(embed: embed);
             return message;
         }
     }

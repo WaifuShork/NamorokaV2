@@ -2,8 +2,7 @@
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using NamorokaV2.Attributes;
-using NamorokaV2.NamorokaCore;
+using Extensions = NamorokaV2.NamorokaCore.Extensions.Extensions;
 
 namespace NamorokaV2
 {
@@ -14,13 +13,12 @@ namespace NamorokaV2
         [Remarks("-unmute <user>")]
         [RequireUserPermission(GuildPermission.Administrator)]
 
-        public async Task UnmuteAsync(SocketGuildUser user)
+        public async Task UnmuteAsync(IGuildUser user)
         {
             SocketUserMessage message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
-            SocketRole role = Context.Guild.GetRole(RoleIds.Muted);
-            await ((IGuildUser)user).RemoveRoleAsync(role);
-            //await SendLogsAsync.SendLogMessageAsync($"{user} has been unmuted.");
+            await user.UnmuteAsync(Context);
+            await Extensions.SendLogMessageAsync($"{user} has been unmuted.");
         }
     }
 }

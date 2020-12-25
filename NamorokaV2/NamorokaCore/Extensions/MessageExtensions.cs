@@ -7,16 +7,18 @@ namespace NamorokaV2
     public static class MessageExtensions
     {
 
-        public static async Task SendToChannel(this Embed e, IMessageChannel channel)
-            => await channel.SendMessageAsync(string.Empty, false, e);
-        public static EmbedBuilder AddFieldConditional(this EmbedBuilder eb, bool condition, string name, object value, bool inline = false)
+        public static async Task SendToChannel(this Embed e, IMessageChannel channel) => await channel.SendMessageAsync(string.Empty, false, e);
+        
+        public static EmbedBuilder AddFieldConditional(this EmbedBuilder embedBuilder, bool condition, string name, object value, bool inline = false)
         {
-            if (condition) {
-                string toPost = value?.ToString();
+            if (condition) 
+            {
+                var toPost = value?.ToString();
 
-                eb.AddField(name, CropToLength(toPost, EmbedFieldBuilder.MaxFieldValueLength), inline);
+                embedBuilder.AddField(name, CropToLength(toPost, EmbedFieldBuilder.MaxFieldValueLength), inline);
             }
-            return eb;
+            
+            return embedBuilder;
         }
 
         public static async Task<bool> TrySendMessageAsync(this IUser user, string text = null, bool isTTS = false, Embed embed = null)

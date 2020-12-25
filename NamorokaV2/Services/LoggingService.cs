@@ -36,7 +36,7 @@ namespace NamorokaV2
             const ulong guildId = ChannelIds.GuildId;
             const ulong logChannelId = ChannelIds.LogChannelId;
         
-            ITextChannel channel = client.GetGuild(guildId).GetTextChannel(logChannelId);
+            var channel = client.GetGuild(guildId).GetTextChannel(logChannelId);
 
             if (channel != null && embed != null)
             {

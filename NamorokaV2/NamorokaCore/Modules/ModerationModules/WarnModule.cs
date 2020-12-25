@@ -18,24 +18,26 @@ namespace NamorokaV2
         [RequireUserPermission(GuildPermission.MuteMembers)]
         public async Task Warn(SocketGuildUser user, [Remainder] string reason)
         {
+            
             await DatabaseService.AddInfractionAsync(user, reason);
             var builder = new EmbedBuilder();
-            
+        
             builder.WithAuthor($"[Warned User] {user}", user.GetAvatarUrl());
             builder.WithColor(Color.Red);
             builder.AddField("Reason", reason);
             builder.AddField("User Responsible", Context.Message.Author);
             builder.WithCurrentTimestamp();
-            
+        
             var embed = builder.Build();
 
             await Extensions.SendLogMessageAsync(embed);
             await Context.Channel.SendMessageAsync(embed: embed);
             var message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
+            
         }
         
-        [Command("warn"), Priority(1)]
+        /*[Command("warn"), Priority(1)]
         [Summary("Warns a user without a reason")]
         [Remarks("-warn <user>")]
         [RequireContext(ContextType.Guild)]
@@ -56,6 +58,6 @@ namespace NamorokaV2
             await Context.Channel.SendMessageAsync(embed: embed);
             var message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
-        }
+        }*/
     }   
 }

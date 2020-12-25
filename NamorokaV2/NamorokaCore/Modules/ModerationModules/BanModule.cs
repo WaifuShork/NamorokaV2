@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using System.Xml.Linq;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
@@ -16,15 +15,16 @@ namespace NamorokaV2
         public async Task BanAsync(IUser user)
         {
             const string reason = "None";
-            SocketUserMessage message = Context.Message;
+            var message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
-            EmbedBuilder builder = new EmbedBuilder();
-            builder.WithAuthor($"[Banned User] {user}", user.GetAvatarUrl());
-            builder.WithColor(Color.Red);
-            builder.AddField("Reason", reason);
-            builder.AddField("User Responsible", Context.Message.Author);
-            builder.WithCurrentTimestamp();
-            Embed embed = builder.Build();
+            var builder = new EmbedBuilder()
+                .WithAuthor($"[Banned User] {user}", user.GetAvatarUrl())
+                .WithColor(Color.Red)
+                .AddField("Reason", reason)
+                .AddField("User Responsible", Context.Message.Author)
+                .WithCurrentTimestamp();
+            
+            var embed = builder.Build();
             
             await Context.Guild.AddBanAsync(user);
             await Extensions.SendLogMessageAsync(embed);
@@ -36,15 +36,15 @@ namespace NamorokaV2
         [Remarks("-ban <user> <reason>")]
         public async Task BanAsync(IUser user, [Remainder]string reason)
         {
-            SocketUserMessage message = Context.Message;
+            var message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
-            EmbedBuilder builder = new EmbedBuilder();
-            builder.WithAuthor($"[Banned User] {user}", user.GetAvatarUrl());
-            builder.WithColor(Color.Red);
-            builder.AddField("Reason", reason);
-            builder.AddField("User Responsible", Context.Message.Author);
-            builder.WithCurrentTimestamp();
-            Embed embed = builder.Build();
+            var builder = new EmbedBuilder()
+                .WithAuthor($"[Banned User] {user}", user.GetAvatarUrl())
+                .WithColor(Color.Red)
+                .AddField("Reason", reason)
+                .AddField("User Responsible", Context.Message.Author)
+                .WithCurrentTimestamp();
+            var embed = builder.Build();
             
             await Context.Guild.AddBanAsync(user);
             await Extensions.SendLogMessageAsync(embed);

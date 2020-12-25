@@ -11,16 +11,16 @@ namespace NamorokaV2.NamorokaCore.Extensions
         {
             const ulong guildId = ChannelIds.GuildId;
             const ulong logChannelId = ChannelIds.LogChannelId;
-            SocketTextChannel channel = CommandHandler._client.GetGuild(guildId).GetTextChannel(logChannelId);
-            RestUserMessage message = await channel.SendMessageAsync(embed: embed);
+            var channel = CommandHandler._client.GetGuild(guildId).GetTextChannel(logChannelId);
+            var message = await channel.SendMessageAsync(embed: embed);
         }
         
         public static async Task SendLogMessageAsync(string msg)
         {
             const ulong guildId = ChannelIds.GuildId;
             const ulong logChannelId = ChannelIds.LogChannelId;
-            SocketTextChannel channel = CommandHandler._client.GetGuild(guildId).GetTextChannel(logChannelId);
-            RestUserMessage message = await channel.SendMessageAsync(msg);
+            var channel = CommandHandler._client.GetGuild(guildId).GetTextChannel(logChannelId);
+            var message = await channel.SendMessageAsync(msg);
         }
     }
 }

@@ -57,13 +57,13 @@ namespace NamorokaV2
             } 
             while (!double.TryParse(months.ToString(), out m));
             
-            double a = p * Math.Pow((1 + r / n), (n * t));
+            var a = p * Math.Pow((1 + r / n), (n * t));
 
-            double f = m * (Math.Pow((1 + r / n), n * t) - 1) / (r / n);
+            var f = m * (Math.Pow((1 + r / n), n * t) - 1) / (r / n);
 
-            double sumTotal = a + f;
+            var sumTotal = a + f;
 
-            double finalTotal = Math.Round(sumTotal, 2);
+            var finalTotal = Math.Round(sumTotal, 2);
             await ReplyAsync($"Final amount is {finalTotal}kr");
         }
     }

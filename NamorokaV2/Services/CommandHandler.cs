@@ -50,7 +50,7 @@ namespace NamorokaV2
             const ulong guildId = ChannelIds.GuildId;
             const ulong logChannelId = ChannelIds.LogChannelId;
 
-            ITextChannel channel = _client.GetGuild(guildId).GetTextChannel(logChannelId);
+            var channel = _client.GetGuild(guildId).GetTextChannel(logChannelId);
 
             if (channel != null)
             {
@@ -65,16 +65,16 @@ namespace NamorokaV2
 
         private static async Task HandleCommandAsync(SocketMessage messageParam)
         {
-            SocketUserMessage message = (SocketUserMessage) messageParam;
+            var message = (SocketUserMessage) messageParam;
             if (message == null) return;
             
-            int argPos = 0;
+            var argPos = 0;
             if (!(message.HasStringPrefix(_config["prefix"], ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos)) || message.Author.IsBot)
                 return;
             
-            SocketCommandContext context = new SocketCommandContext(_client, message);
+            var context = new SocketCommandContext(_client, message);
             
-            IResult result = await _commands.ExecuteAsync(context, argPos, _provider);
+            var result = await _commands.ExecuteAsync(context, argPos, _provider);
 
             if (!result.IsSuccess)
                 await context.Channel.SendMessageAsync($"The following error has occurred:\n{result.ErrorReason}");

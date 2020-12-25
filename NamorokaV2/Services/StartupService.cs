@@ -26,7 +26,7 @@ namespace NamorokaV2
 
         public async Task StartAsync()
         {
-            string token = _config["token:discord"];
+            var token = _config["token:discord"];
             if (string.IsNullOrEmpty(token))
             {
                 Console.WriteLine("Please provide your discord token in _config.yml");

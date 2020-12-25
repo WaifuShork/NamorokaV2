@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Discord;
-using Discord.Audio;
 using Discord.Commands;
 using Victoria;
 using Victoria.Enums;
 using Victoria.EventArgs;
+
+// TODO: Fix queueing of songs from either YouTube or other various sources. Make sure string doesn't return char array from Victoria's search query. 
 
 namespace NamorokaV2
 {
@@ -18,7 +19,7 @@ namespace NamorokaV2
             _lavaNode = lavaNode;
         }
 
-        private async Task OnTrackEnded(TrackEndedEventArgs args)
+        private static async Task OnTrackEnded(TrackEndedEventArgs args)
         {
             if (!args.Reason.ShouldPlayNext())
                 return;

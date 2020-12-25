@@ -12,10 +12,10 @@ namespace NamorokaV2
         
         internal static async Task<ConfigJson> GetConfigJson(string _json)
         {
-            await using (FileStream fileStream = File.OpenRead(_json))
-            using (StreamReader streamReader = new StreamReader(fileStream, new UTF8Encoding(false)))
+            await using (var fileStream = File.OpenRead(_json))
+            using (var streamReader = new StreamReader(fileStream, new UTF8Encoding(false)))
                 _json = await streamReader.ReadToEndAsync().ConfigureAwait(false);
-            ConfigJson configJson = JsonConvert.DeserializeObject<ConfigJson>(_json);
+            var configJson = JsonConvert.DeserializeObject<ConfigJson>(_json);
             return configJson;
         }
     }

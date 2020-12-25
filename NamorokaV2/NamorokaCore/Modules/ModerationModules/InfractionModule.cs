@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Discord.Commands;
-using Discord.WebSocket;
 using System.Threading.Tasks;
 using Discord;
 using NamorokaV2.NamorokaCore.Extensions;
@@ -32,11 +30,10 @@ namespace NamorokaV2
 
             
             var embed = builder.Build();
-            //await Extensions.SendLogMessageAsync(embed);
+            await Extensions.SendLogMessageAsync(embed);
             await Context.Channel.SendMessageAsync(embed: embed);
-            
-            //var message = Context.Message;
-            //await Context.Channel.DeleteMessageAsync(message);
+            var message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
         }
         
         [Command("clear-infr"), Priority(1)]
