@@ -6,7 +6,7 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.Moderation
 {
     public sealed partial class Moderation    
     {
@@ -53,7 +53,7 @@ namespace NamorokaV2
             var fMessages = aMessages.Where(m => m.Author.Id == user.Id)
                 .Where(m => (DateTimeOffset.Now - m.CreatedAt).Days < 14);
 
-            if (fMessages.Count() > 0) 
+            if (fMessages.Any()) 
             {
                 var messages = fMessages.Take(count);
                 await Context.Channel.DeleteMessageAsync(message);

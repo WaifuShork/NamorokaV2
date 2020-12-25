@@ -6,7 +6,7 @@ using Discord.WebSocket;
 using Humanizer;
 using Humanizer.Localisation;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.UtilityModules
 {
     public class UptimeModule : ModuleBase<SocketCommandContext>
     {

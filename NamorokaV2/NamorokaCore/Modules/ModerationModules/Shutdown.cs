@@ -1,7 +1,7 @@
 ﻿using Discord.Commands;
 using System.Threading.Tasks;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.Moderation
 {
     [RequireContext(ContextType.Guild)]
     public sealed partial class Moderation    

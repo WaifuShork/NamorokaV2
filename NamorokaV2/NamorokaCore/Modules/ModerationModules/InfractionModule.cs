@@ -3,9 +3,9 @@ using System.Linq;
 using Discord.Commands;
 using System.Threading.Tasks;
 using Discord;
-using NamorokaV2.NamorokaCore.Extensions;
+using NamorokaV2.NamorokaCore.Services;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.Moderation
 {
     [RequireContext(ContextType.Guild)]
     public sealed partial class Moderation    
@@ -30,7 +30,7 @@ namespace NamorokaV2
 
             
             var embed = builder.Build();
-            await Extensions.SendLogMessageAsync(embed);
+            await Extensions.Extensions.SendLogMessageAsync(embed);
             await Context.Channel.SendMessageAsync(embed: embed);
             var message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Discord.Commands;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.TypeReaders
 {
     public class BooleanTypeReader : TypeReader
     {

@@ -3,10 +3,10 @@ using Discord.Commands;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Discord.Rest;
 using Discord.WebSocket;
+using NamorokaV2.Configuration;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Services
 {
     internal class LoggingService
     {

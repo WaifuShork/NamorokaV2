@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NamorokaV2
+namespace NamorokaV2.Configuration
 {
     internal struct ConfigJson
     {

@@ -6,7 +6,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using NamorokaV2.NamorokaCore;
+using NamorokaV2.NamorokaCore.Services;
 using Victoria;
 
 namespace NamorokaV2
@@ -16,7 +16,7 @@ namespace NamorokaV2
 
         public IConfigurationRoot Configuration { get; }
         
-        public Startup(string[] args)
+        public Startup(string[] args = default)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)

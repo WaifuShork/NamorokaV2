@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Timers;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using NamorokaV2.Attributes;
 using Newtonsoft.Json;
-using Discord.Addons.Interactive;
+using NamorokaV2.Configuration;
+using NamorokaV2.NamorokaCore.Services;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.UtilityModules
 {
     public sealed class InfoModule : ModuleBase<SocketCommandContext>
     {

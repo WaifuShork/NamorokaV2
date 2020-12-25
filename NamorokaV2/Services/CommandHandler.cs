@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Reflection;
 using System.Threading.Tasks;
 using Discord;
-using Discord.Addons.Interactive;
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using NamorokaV2.NamorokaCore;
+using NamorokaV2.Configuration;
 using Victoria;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Services
 {
     public class CommandHandler : ModuleBase<SocketCommandContext>
     {

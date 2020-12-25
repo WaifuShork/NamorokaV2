@@ -2,9 +2,9 @@
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using Extensions = NamorokaV2.NamorokaCore.Extensions.Extensions;
+using NamorokaV2.NamorokaCore.Extensions;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.Moderation
 {
     public sealed partial class Moderation    
     {
@@ -18,7 +18,7 @@ namespace NamorokaV2
             SocketUserMessage message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
             await user.UnmuteAsync(Context);
-            await Extensions.SendLogMessageAsync($"{user} has been unmuted.");
+            await Extensions.Extensions.SendLogMessageAsync($"{user} has been unmuted.");
         }
     }
 }

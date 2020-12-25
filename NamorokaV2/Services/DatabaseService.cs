@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 using Discord;
 using Newtonsoft.Json;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Services
 {
     public static class DatabaseService
     {
         private static readonly List<UserModel> _users = DeserializeUsersFromDatabase();
-        private static string _reason;
         private const string data = @"..\..\..\database.json";
         
         private static async Task SerializeUserToDatabaseAsync(List<UserModel> users)

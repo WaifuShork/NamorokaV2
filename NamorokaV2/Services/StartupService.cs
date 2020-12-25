@@ -4,10 +4,9 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Services
 {
     public class StartupService
     {

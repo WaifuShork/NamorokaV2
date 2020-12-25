@@ -1,8 +1,4 @@
-﻿using System;
-using System.ComponentModel.Design;
-using System.Threading.Tasks;
-using Discord.Commands;
-using Discord.WebSocket;
+﻿using System.Threading.Tasks;
 
 namespace NamorokaV2
 {

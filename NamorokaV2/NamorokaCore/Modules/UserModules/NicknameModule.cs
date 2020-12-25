@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.UserModules
 {
     [Name("Nickname")]
     [RequireContext(ContextType.Guild)]

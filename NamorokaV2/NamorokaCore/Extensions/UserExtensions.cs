@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
+using NamorokaV2.Configuration;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Extensions
 {
     public static class UserExtensions
     {

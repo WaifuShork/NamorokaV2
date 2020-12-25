@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
+using NamorokaV2.NamorokaCore.Extensions;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.UtilityModules
 {
     public class SystemTestModule : ModuleBase<SocketCommandContext>
     {

@@ -1,9 +1,10 @@
 ﻿using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using NamorokaV2.Configuration;
 using Newtonsoft.Json;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Services
 {
     internal static class JsonService
     {

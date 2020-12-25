@@ -8,7 +8,7 @@ using Victoria.EventArgs;
 
 // TODO: Fix queueing of songs from either YouTube or other various sources. Make sure string doesn't return char array from Victoria's search query. 
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.Audio
 {
     public sealed class AudioModule : ModuleBase<SocketCommandContext>
     {
@@ -31,7 +31,7 @@ namespace NamorokaV2
                 return;
             }
 
-            if (!(queueable is LavaTrack track))
+            if (!(queueable is { } track))
             {
                 await player.TextChannel.SendMessageAsync("Next item in the queue is not a track.");
                 return;
@@ -74,7 +74,6 @@ namespace NamorokaV2
         public async Task SkipAsync()
         {
             var player = _lavaNode.Players;
-            LavaPlayer play;
             foreach (var track in player)
             {
                 await track.SkipAsync();

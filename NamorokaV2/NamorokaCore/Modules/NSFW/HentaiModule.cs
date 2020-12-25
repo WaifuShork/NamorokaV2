@@ -4,7 +4,7 @@ using Discord;
 using Discord.Commands;
 using Newtonsoft.Json.Linq;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.NSFW
 {
     public class HentaiModule : ModuleBase<SocketCommandContext>
     {

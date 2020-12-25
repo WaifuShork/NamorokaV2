@@ -2,7 +2,7 @@
 
 using Discord;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Extensions
 {
     public static class MessageExtensions
     {

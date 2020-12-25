@@ -1,15 +1,14 @@
 ﻿using System.Threading.Tasks;
 using Discord;
-using Discord.Commands;
 using Discord.WebSocket;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+using NamorokaV2.Configuration;
 
-namespace NamorokaV2.NamorokaCore
+namespace NamorokaV2.NamorokaCore.Extensions
 {
     internal static class SendLogsAsync
     {
         private static readonly DiscordSocketClient client = new();
-        internal static async Task<IMessage> SendLogMessageAsync(this ISocketMessageChannel socketChannel, string messageString)
+        internal static async Task<IMessage> SendLogMessageAsync(this ITextChannel socketChannel, string messageString)
         {
             
             const ulong guildId = ChannelIds.GuildId;

@@ -4,7 +4,7 @@ using Discord.Addons.Interactive;
 using Discord.Commands;
 using Discord.WebSocket;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules
 {
     public class CompoundInterestModule : InteractiveBase
     {

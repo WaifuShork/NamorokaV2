@@ -3,7 +3,7 @@ using Discord;
 using Discord.Commands;
 using NamorokaV2.NamorokaCore.Extensions;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.Moderation
 {
     public sealed partial class Moderation    
     {
@@ -29,7 +29,7 @@ namespace NamorokaV2
             //var role = Context.Guild.GetRole(RoleIds.Muted);
             //await user.AddRoleAsync(role);
             await Context.Channel.SendMessageAsync(embed: embed);
-            await Extensions.SendLogMessageAsync(embed);
+            await Extensions.Extensions.SendLogMessageAsync(embed);
         }
         
         [Command("mute")]
@@ -55,7 +55,7 @@ namespace NamorokaV2
             //SocketRole role = Context.Guild.GetRole(RoleIds.Muted);
             //await user.AddRoleAsync(role);
             await Context.Channel.SendMessageAsync(embed: embed);
-            await Extensions.SendLogMessageAsync(embed);
+            await Extensions.Extensions.SendLogMessageAsync(embed);
         }
     }
 }

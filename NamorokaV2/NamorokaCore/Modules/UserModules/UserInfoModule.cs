@@ -4,9 +4,10 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using NamorokaV2.NamorokaCore.Extensions;
 
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.UserModules
 {
     public class UserInfoModule : ModuleBase<SocketCommandContext>
     {

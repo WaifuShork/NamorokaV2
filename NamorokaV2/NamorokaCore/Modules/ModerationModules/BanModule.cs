@@ -1,10 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
-using Discord.WebSocket;
-using Extensions = NamorokaV2.NamorokaCore.Extensions.Extensions;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.Moderation
 {
     public sealed partial class Moderation : ModuleBase<SocketCommandContext>
     {
@@ -27,7 +25,7 @@ namespace NamorokaV2
             var embed = builder.Build();
             
             await Context.Guild.AddBanAsync(user);
-            await Extensions.SendLogMessageAsync(embed);
+            await Extensions.Extensions.SendLogMessageAsync(embed);
         }
         
         [RequireUserPermission(GuildPermission.Administrator)]
@@ -47,7 +45,7 @@ namespace NamorokaV2
             var embed = builder.Build();
             
             await Context.Guild.AddBanAsync(user);
-            await Extensions.SendLogMessageAsync(embed);
+            await Extensions.Extensions.SendLogMessageAsync(embed);
         }
     }
 }
