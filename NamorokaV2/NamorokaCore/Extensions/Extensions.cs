@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Discord;
-using Discord.Rest;
-using Discord.WebSocket;
+using NamorokaV2.Configuration;
+using NamorokaV2.NamorokaCore.Services;
 
 namespace NamorokaV2.NamorokaCore.Extensions
 {
@@ -11,16 +11,16 @@ namespace NamorokaV2.NamorokaCore.Extensions
         {
             const ulong guildId = ChannelIds.GuildId;
             const ulong logChannelId = ChannelIds.LogChannelId;
-            SocketTextChannel channel = CommandHandler._client.GetGuild(guildId).GetTextChannel(logChannelId);
-            RestUserMessage message = await channel.SendMessageAsync(embed: embed);
+            var channel = CommandHandler._client.GetGuild(guildId).GetTextChannel(logChannelId);
+            await channel.SendMessageAsync(embed: embed);
         }
         
         public static async Task SendLogMessageAsync(string msg)
         {
             const ulong guildId = ChannelIds.GuildId;
             const ulong logChannelId = ChannelIds.LogChannelId;
-            SocketTextChannel channel = CommandHandler._client.GetGuild(guildId).GetTextChannel(logChannelId);
-            RestUserMessage message = await channel.SendMessageAsync(msg);
+            var channel = CommandHandler._client.GetGuild(guildId).GetTextChannel(logChannelId);
+            await channel.SendMessageAsync(msg);
         }
     }
 }

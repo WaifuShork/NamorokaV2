@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
+using NamorokaV2.Configuration;
+using NamorokaV2.NamorokaCore.Services;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.UtilityModules
 {
     public class HelpModule : ModuleBase<SocketCommandContext>
     {

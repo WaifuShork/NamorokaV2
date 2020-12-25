@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,7 +6,7 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.Moderation
 {
     public sealed partial class Moderation    
     {
@@ -18,14 +17,14 @@ namespace NamorokaV2
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task ClearMessagesAsync([Summary("The amount of messages to clear")] int count)
         {
-            SocketUserMessage message = Context.Message;
+            var message = Context.Message;
             
             const int maxHistory = 100;
             
             count = count + 1 > maxHistory ? maxHistory : count + 1;
             
-            IEnumerable<IMessage> messages = await Context.Channel.GetMessagesAsync(count).FlattenAsync();
-            IEnumerable<IMessage> validMessages = messages.Where(m => (DateTimeOffset.Now - m.CreatedAt).Days < 14);
+            var messages = await Context.Channel.GetMessagesAsync(count).FlattenAsync();
+            var validMessages = messages.Where(m => (DateTimeOffset.Now - m.CreatedAt).Days < 14);
             await Context.Channel.DeleteMessageAsync(message);
             await ((ITextChannel) Context.Channel).DeleteMessagesAsync(validMessages);
         }
@@ -40,7 +39,7 @@ namespace NamorokaV2
             [Summary("The amount of messages to clear")] int count,
             [Summary("The history length to delete from")] int history = 100) 
         {
-            SocketUserMessage message = Context.Message;
+            var message = Context.Message;
             const int maxHistory = 100;
             
             count = count + 1 > maxHistory ? maxHistory : count + 1;
@@ -50,13 +49,13 @@ namespace NamorokaV2
                 history = maxHistory;
             }
 
-            IEnumerable<IMessage> aMessages = await Context.Channel.GetMessagesAsync(history).FlattenAsync();
-            IEnumerable<IMessage> fMessages = aMessages.Where(m => m.Author.Id == user.Id)
+            var aMessages = await Context.Channel.GetMessagesAsync(history).FlattenAsync();
+            var fMessages = aMessages.Where(m => m.Author.Id == user.Id)
                 .Where(m => (DateTimeOffset.Now - m.CreatedAt).Days < 14);
 
-            if (fMessages.Count() > 0) 
+            if (fMessages.Any()) 
             {
-                IEnumerable<IMessage> messages = fMessages.Take(count);
+                var messages = fMessages.Take(count);
                 await Context.Channel.DeleteMessageAsync(message);
                 await ((ITextChannel) Context.Channel).DeleteMessagesAsync(messages);
             }

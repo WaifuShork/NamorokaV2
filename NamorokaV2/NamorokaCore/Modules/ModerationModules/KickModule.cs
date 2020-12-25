@@ -2,10 +2,8 @@
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using NamorokaV2.NamorokaCore;
-using NamorokaV2.NamorokaCore.Extensions;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.Moderation
 {
     public sealed partial class Moderation    
     {
@@ -16,20 +14,19 @@ namespace NamorokaV2
         [Summary("Kicks a user with a reason")]
         public async Task KickAsync(SocketGuildUser user, [Remainder]string reason)
         {
-            SocketUserMessage message = Context.Message;
+            var message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
             
-            EmbedBuilder builder = new EmbedBuilder();
-            
-            builder.WithAuthor($"[Kicked User] {user}", user.GetAvatarUrl());
-            builder.WithColor(Color.Red);
-            builder.AddField("Reason", reason);
-            builder.AddField("User Responsible", Context.Message.Author);
-            builder.WithCurrentTimestamp();
-            Embed embed = builder.Build();
+            var builder = new EmbedBuilder()
+                .WithAuthor($"[Kicked User] {user}", user.GetAvatarUrl())
+                .WithColor(Color.Red)
+                .AddField("Reason", reason)
+                .AddField("User Responsible", Context.Message.Author)
+                .WithCurrentTimestamp();
+            var embed = builder.Build();
             
             await user.KickAsync();
-            await Extensions.SendLogMessageAsync(embed);
+            await Extensions.Extensions.SendLogMessageAsync(embed);
         }
         
         [RequireUserPermission(GuildPermission.Administrator)]
@@ -38,20 +35,19 @@ namespace NamorokaV2
         public async Task KickAsync(SocketGuildUser user)
         {
             const string reason = "None";
-            SocketUserMessage message = Context.Message;
+            var message = Context.Message;
             await Context.Channel.DeleteMessageAsync(message);
-            
-            EmbedBuilder builder = new EmbedBuilder();
-            
-            builder.WithAuthor($"[Kicked User] {user}", user.GetAvatarUrl());
-            builder.WithColor(Color.Red);
-            builder.AddField("Reason", reason);
-            builder.AddField("User Responsible", Context.Message.Author);
-            builder.WithCurrentTimestamp();
-            Embed embed = builder.Build();
+
+            var builder = new EmbedBuilder()
+                .WithAuthor($"[Kicked User] {user}", user.GetAvatarUrl())
+                .WithColor(Color.Red)
+                .AddField("Reason", reason)
+                .AddField("User Responsible", Context.Message.Author)
+                .WithCurrentTimestamp();
+            var embed = builder.Build();
             
             await user.KickAsync();
-            await Extensions.SendLogMessageAsync(embed);
+            await Extensions.Extensions.SendLogMessageAsync(embed);
         }
     }
 }

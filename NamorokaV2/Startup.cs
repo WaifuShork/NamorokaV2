@@ -6,19 +6,19 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NamorokaV2.NamorokaCore.Services;
+using Victoria;
 
 namespace NamorokaV2
 {
     public class Startup
     {
-        //private readonly DiscordSocketClient client;
-        //private readonly CommandService commands;
 
         public IConfigurationRoot Configuration { get; }
         
-        public Startup(string[] args)
+        public Startup(string[] args = default)
         {
-            IConfigurationBuilder builder = new ConfigurationBuilder()
+            var builder = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
                 .AddYamlFile("_config.yml");
             Configuration = builder.Build();
@@ -26,18 +26,18 @@ namespace NamorokaV2
         
         public static async Task RunAsync(string[] args)
         {
-            Startup startup = new Startup(args);
+            var startup = new Startup(args);
             await startup.RunAsync().ConfigureAwait(false);
         }
 
         private async Task RunAsync()
         {
-            ServiceCollection services = new ServiceCollection();
+            var services = new ServiceCollection();
             ConfigureServices(services);
 
-            ServiceProvider provider = services.BuildServiceProvider();
-            //provider.GetRequiredService<CommandHandler>();
+            var provider = services.BuildServiceProvider();
             await provider.GetRequiredService<StartupService>().StartAsync().ConfigureAwait(false);
+            
             await Task.Delay(-1).ConfigureAwait(false);
         }
 
@@ -57,6 +57,10 @@ namespace NamorokaV2
                 }))
                 .AddSingleton<CommandHandler>()
                 .AddSingleton<InteractiveService>()
+                .AddLavaNode(x =>
+                {
+                    x.SelfDeaf = false;
+                })
                 .AddSingleton<StartupService>()
                 .AddSingleton(Configuration);
         }

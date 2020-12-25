@@ -4,15 +4,14 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Services
 {
     public class StartupService
     {
         private static IServiceProvider _provider;
-        public static DiscordSocketClient _client;
+        private static DiscordSocketClient _client;
         private readonly CommandService _commands;
         private readonly IConfigurationRoot _config;
 
@@ -26,7 +25,7 @@ namespace NamorokaV2
 
         public async Task StartAsync()
         {
-            string token = _config["token:discord"];
+            var token = _config["token:discord"];
             if (string.IsNullOrEmpty(token))
             {
                 Console.WriteLine("Please provide your discord token in _config.yml");

@@ -3,17 +3,17 @@ using Discord.Commands;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Discord.Rest;
 using Discord.WebSocket;
+using NamorokaV2.Configuration;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Services
 {
     internal class LoggingService
     {
-        private readonly DiscordSocketClient _client = new DiscordSocketClient();
-        private CommandService command;
-        internal LoggingService(BaseDiscordClient client, CommandService command)
+        private readonly DiscordSocketClient client;
+        internal LoggingService(DiscordSocketClient client, CommandService command)
         {
+            this.client = client;
             client.Log += LogAsync;
             command.Log += LogAsync;
         }
@@ -36,7 +36,7 @@ namespace NamorokaV2
             const ulong guildId = ChannelIds.GuildId;
             const ulong logChannelId = ChannelIds.LogChannelId;
         
-            ITextChannel channel = _client.GetGuild(guildId).GetTextChannel(logChannelId);
+            var channel = client.GetGuild(guildId).GetTextChannel(logChannelId);
 
             if (channel != null && embed != null)
             {

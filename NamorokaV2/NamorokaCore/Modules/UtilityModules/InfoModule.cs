@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using NamorokaV2.Attributes;
 using Newtonsoft.Json;
-using Discord.Addons.Interactive;
+using NamorokaV2.Configuration;
+using NamorokaV2.NamorokaCore.Services;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.UtilityModules
 {
     public sealed class InfoModule : ModuleBase<SocketCommandContext>
     {
@@ -123,7 +122,15 @@ namespace NamorokaV2
             await Context.Channel.DeleteMessageAsync(message);
             await Context.Channel.SendMessageAsync("I'M SORRY MY PUSSY IS SO TIGHT AND JUICY AND SOUNDS LIKE MACARONI & CHEESE IT'S NOT MY FAULT <@329502393672663042>");
         }
-
         
+        [Command("zoop")]
+        public async Task ZoopAsync()
+        {
+            SocketUserMessage message = Context.Message;
+            await Context.Channel.DeleteMessageAsync(message);
+            await ReplyAsync("This is");
+            await Task.Delay(2000);
+            await ReplyAsync("a test");
+        }
     }
 }  

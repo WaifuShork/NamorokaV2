@@ -1,12 +1,9 @@
-﻿using System.IO;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
-using NamorokaV2.Attributes;
-using Newtonsoft.Json;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Modules.UtilityModules.ConfigModules
 {
     public sealed partial class ConfigModule : ModuleBase<SocketCommandContext>
     {

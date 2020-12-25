@@ -53,6 +53,10 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
             }
           },
           "imports": [
@@ -126,7 +130,7 @@
             },
             "Discord.Addons.Hosting": {
               "target": "Package",
-              "version": "[3.1.0, )"
+              "version": "[3.1.1, )"
             },
             "Discord.Addons.Interactive": {
               "target": "Package",
@@ -134,7 +138,7 @@
             },
             "Discord.Net": {
               "target": "Package",
-              "version": "[2.3.0-dev-20201119.4, )"
+              "version": "[2.3.0-dev-20201220.5, )"
             },
             "Humanizer.Core": {
               "target": "Package",
@@ -142,17 +146,17 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",
@@ -160,7 +164,7 @@
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
@@ -176,7 +180,7 @@
             },
             "NetEscapades.Configuration.Yaml": {
               "target": "Package",
-              "version": "[2.0.1, )"
+              "version": "[2.1.0, )"
             },
             "System.Configuration.ConfigurationManager": {
               "target": "Package",
@@ -185,6 +189,10 @@
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.2, )"
+            },
+            "Victoria": {
+              "target": "Package",
+              "version": "[5.1.10, )"
             }
           },
           "imports": [

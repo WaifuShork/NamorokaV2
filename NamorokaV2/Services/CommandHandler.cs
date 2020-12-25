@@ -1,42 +1,45 @@
 ﻿using System;
-using System.Reflection;
 using System.Threading.Tasks;
 using Discord;
-using Discord.Addons.Interactive;
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using NamorokaV2.NamorokaCore;
+using NamorokaV2.Configuration;
+using Victoria;
 
-namespace NamorokaV2
+namespace NamorokaV2.NamorokaCore.Services
 {
     public class CommandHandler : ModuleBase<SocketCommandContext>
     {
-        public static IServiceProvider _provider;
+        private static IServiceProvider _provider;
         public static DiscordSocketClient _client;
-        public static CommandService _commands;
-        public static IConfigurationRoot _config;
-        private SocketMessage message;
+        private static CommandService _commands;
+        private static IConfigurationRoot _config;
+        private static LavaNode _lavaNode;
 
-        public CommandHandler(DiscordSocketClient client, CommandService commands, IConfigurationRoot config, IServiceProvider provider)
+        public CommandHandler(DiscordSocketClient client, CommandService commands, IConfigurationRoot config, IServiceProvider provider, LavaNode lavaNode)
         {
-            _commands = commands;
             _client = client;
+
+            _lavaNode = lavaNode;
+            _commands = commands;
             _provider = provider;
             _config = config;
             _client.Ready += OnReady;
-            //_client.Ready += DisplayStartup;
             _client.MessageReceived += HandleCommandAsync;
+            
+            //_client.Ready += DisplayStartup;
         }
 
-        private static Task OnReady()
+        private static async Task OnReady()
         {
-            LoggingService loggingService = new LoggingService(_client, _commands);
+            if (!_lavaNode.IsConnected)
+            {
+                await _lavaNode.ConnectAsync();
+            }
             
-            Console.WriteLine($"{loggingService} initialized properly");
             Console.WriteLine($"Connected as {_client.CurrentUser.Username}#{_client.CurrentUser.Discriminator}");
-            return Task.CompletedTask;
+            await Task.CompletedTask;
         }
 
         private static async Task DisplayStartup()
@@ -44,7 +47,7 @@ namespace NamorokaV2
             const ulong guildId = ChannelIds.GuildId;
             const ulong logChannelId = ChannelIds.LogChannelId;
 
-            ITextChannel channel = _client.GetGuild(guildId).GetTextChannel(logChannelId);
+            var channel = _client.GetGuild(guildId).GetTextChannel(logChannelId);
 
             if (channel != null)
             {
@@ -59,16 +62,16 @@ namespace NamorokaV2
 
         private static async Task HandleCommandAsync(SocketMessage messageParam)
         {
-            SocketUserMessage message = (SocketUserMessage) messageParam;
+            var message = (SocketUserMessage) messageParam;
             if (message == null) return;
             
-            int argPos = 0;
+            var argPos = 0;
             if (!(message.HasStringPrefix(_config["prefix"], ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos)) || message.Author.IsBot)
                 return;
             
-            SocketCommandContext context = new SocketCommandContext(_client, message);
+            var context = new SocketCommandContext(_client, message);
             
-            IResult result = await _commands.ExecuteAsync(context, argPos, _provider);
+            var result = await _commands.ExecuteAsync(context, argPos, _provider);
 
             if (!result.IsSuccess)
                 await context.Channel.SendMessageAsync($"The following error has occurred:\n{result.ErrorReason}");

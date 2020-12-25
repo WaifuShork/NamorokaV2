@@ -1,23 +1,22 @@
 ﻿using System.Threading.Tasks;
 using Discord;
-using Discord.Commands;
 using Discord.WebSocket;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+using NamorokaV2.Configuration;
 
-namespace NamorokaV2.NamorokaCore
+namespace NamorokaV2.NamorokaCore.Extensions
 {
     internal static class SendLogsAsync
     {
-        private static readonly DiscordSocketClient client = new DiscordSocketClient();
-        internal static async Task<IMessage> SendLogMessageAsync(this ISocketMessageChannel socketChannel, string messageString)
+        private static readonly DiscordSocketClient client = new();
+        internal static async Task<IMessage> SendLogMessageAsync(this ITextChannel socketChannel, string messageString)
         {
             
             const ulong guildId = ChannelIds.GuildId;
             const ulong logChannelId = ChannelIds.LogChannelId;
         
-            ITextChannel channel = client.GetGuild(guildId).GetTextChannel(logChannelId);
+            var channel = client.GetGuild(guildId).GetTextChannel(logChannelId);
 
-            IUserMessage message = await channel.SendMessageAsync(messageString);
+            var message = await channel.SendMessageAsync(messageString);
             return message;
         }
         
@@ -28,7 +27,7 @@ namespace NamorokaV2.NamorokaCore
         
             channel = client.GetGuild(guildId).GetTextChannel(logChannelId);
 
-            IUserMessage message = await channel.SendMessageAsync(embed: embed);
+            var message = await channel.SendMessageAsync(embed: embed);
             return message;
         }
     }
