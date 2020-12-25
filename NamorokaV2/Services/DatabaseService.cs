@@ -10,7 +10,8 @@ namespace NamorokaV2
 {
     public static class DatabaseService
     {
-        private static readonly List<UserModel> _users = await DeserializeUsersFromDatabaseAsync();
+        private static readonly List<UserModel> _users = DeserializeUsersFromDatabase();
+        private static string _reason;
         private const string data = @"..\..\..\database.json";
         
         private static async Task SerializeUserToDatabaseAsync(List<UserModel> users)
@@ -20,7 +21,7 @@ namespace NamorokaV2
         }
 
         public static async Task AddInfractionAsync(IGuildUser user, string reason)
-        { 
+        {
             await PushUserToDatabaseAsync(user, reason);
         }
         
@@ -29,7 +30,7 @@ namespace NamorokaV2
             await PushUserToDatabaseAsync(user);
         }
 
-        private static async Task PushUserToDatabaseAsync(IGuildUser user, string reason = "")
+        private static async Task PushUserToDatabaseAsync(IGuildUser user, string reason = " ")
         {
             var pushableUser = FindUserInDatabase(user);
             _users.Remove(pushableUser);
@@ -39,7 +40,7 @@ namespace NamorokaV2
             await SerializeUserToDatabaseAsync(_users);
         }
 
-        public static UserModel FindUserInDatabase(IGuildUser user, string reason = "")
+        public static UserModel FindUserInDatabase(IGuildUser user, string reason = " ")
         {
             var userId = user.Id;
             var filteredUsers = _users.Where(u => u.Id == userId).ToList();
@@ -58,7 +59,7 @@ namespace NamorokaV2
             var newUser = new UserModel
             {
                 Id = user.Id,
-                Reason = new List<string> {reason}
+                Reason = new List<string> { reason }
             };
             
             _users.Add(newUser);
@@ -67,11 +68,20 @@ namespace NamorokaV2
             return newUser;
         }
 
-        private static async Task<List<UserModel>> DeserializeUsersFromDatabaseAsync()
+        private static List<UserModel> DeserializeUsersFromDatabase()
         {
-            var initializeJson = await File.ReadAllTextAsync(data);
+            var initializeJson = File.ReadAllText(data);
             var users = JsonConvert.DeserializeObject<List<UserModel>>(initializeJson);
             return users;
+        }
+        
+        public static IEnumerable<string> RetrieveFromDatabase(IGuildUser user)
+        {
+            var reasonList = new List<string>();
+            var locateUser = _users.Find(u => u.Id == user.Id);
+            if (locateUser == null) return reasonList;
+            reasonList.AddRange(locateUser.Reason);
+            return reasonList;
         }
 
 
