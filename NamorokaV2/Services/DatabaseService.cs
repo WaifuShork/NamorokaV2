@@ -2,21 +2,78 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Discord;
 using Newtonsoft.Json;
-
-// TODO: Fix this heavily retarded class so there's at least some modularity or readability, everything is chunked together, and looks absolutely horrendous, and its entirely inefficient
-
-// What do I want to do? 
-// 1: be able to search for a user
-// 2: be able to store located a user
-// 3: be able to retrieve located a user
 
 namespace NamorokaV2
 {
     public static class DatabaseService
     {
+        private static readonly List<UserModel> _users = await DeserializeUsersFromDatabaseAsync();
         private const string data = @"..\..\..\database.json";
+        
+        private static async Task SerializeUserToDatabaseAsync(List<UserModel> users)
+        {
+            var json = JsonConvert.SerializeObject(users, Formatting.Indented);
+            await File.WriteAllTextAsync(data, json);
+        }
+
+        public static async Task AddInfractionAsync(IGuildUser user, string reason)
+        { 
+            await PushUserToDatabaseAsync(user, reason);
+        }
+        
+        public static async Task AddInfractionAsync(IGuildUser user)
+        { 
+            await PushUserToDatabaseAsync(user);
+        }
+
+        private static async Task PushUserToDatabaseAsync(IGuildUser user, string reason = "")
+        {
+            var pushableUser = FindUserInDatabase(user);
+            _users.Remove(pushableUser);
+            pushableUser.Reason.Add(reason);
+            
+            _users.Add(pushableUser);
+            await SerializeUserToDatabaseAsync(_users);
+        }
+
+        public static UserModel FindUserInDatabase(IGuildUser user, string reason = "")
+        {
+            var userId = user.Id;
+            var filteredUsers = _users.Where(u => u.Id == userId).ToList();
+
+            if (filteredUsers.Any())
+            {
+                var locatedUser = filteredUsers.First();
+                return locatedUser;
+            }
+            return CreateNewUserInDatabase(user, reason);
+        }
+        
+        private static UserModel CreateNewUserInDatabase(IGuildUser user, string reason)
+        {
+            Console.WriteLine("Lets create a new user!");
+            var newUser = new UserModel
+            {
+                Id = user.Id,
+                Reason = new List<string> {reason}
+            };
+            
+            _users.Add(newUser);
+            
+            Console.WriteLine($"{newUser} has been created!");
+            return newUser;
+        }
+
+        private static async Task<List<UserModel>> DeserializeUsersFromDatabaseAsync()
+        {
+            var initializeJson = await File.ReadAllTextAsync(data);
+            var users = JsonConvert.DeserializeObject<List<UserModel>>(initializeJson);
+            return users;
+        }
+
 
         /*public static async Task AddToDatabase(SocketGuildUser user, string reason)
         {
@@ -40,7 +97,7 @@ namespace NamorokaV2
             return reasonList;
         }*/
 
-        public static void AddUserToDatabase(IGuildUser user)
+        /*public static void AddUserToDatabase(IGuildUser user)
         {
             List<UserModel> users = DeserializeUsersFromDatabase();
             
@@ -68,14 +125,17 @@ namespace NamorokaV2
             {
                 users.Add(new UserModel
                     {Id = userId, Reason = new List<string>() {"There was no given reason for this warning"}});
-            }*/
-        }
-
-        private static void SerializeUserToDatabase(List<UserModel> users)
-        {
-            string json = JsonConvert.SerializeObject(users, Formatting.Indented);
-            File.WriteAllText(data, json);
-        }
+            }
+        }*/
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         // Overload for reason given
         /*private static async Task SearchForUser(SocketGuildUser user, string reason)
@@ -125,7 +185,8 @@ namespace NamorokaV2
         // if that user exists, append a warning
         // if that user does not exist, create a new one and add a warning
 
-        public static UserModel SearchDatabaseForUser(IGuildUser user)
+
+        /*public static UserModel SearchDatabaseForUser(IGuildUser user)
         {
             // deserialize the json to a list 
             var users = DeserializeUsersFromDatabase();
@@ -154,26 +215,6 @@ namespace NamorokaV2
             // yes the user exists so lets return it 
             Console.WriteLine(locatedUser);
             return locatedUser;
-        }
-        
-
-        private static UserModel FindUserInDatabase(IGuildUser user)
-        {
-            //string initializeJson = File.ReadAllText(data);
-            //List<UserModel> users = JsonConvert.DeserializeObject<List<UserModel>>(initializeJson);
-            List<UserModel> users = DeserializeUsersFromDatabase();
-            
-            ulong userId = user.Id;
-
-            IEnumerable<UserModel> filteredUsers = users.Where(u => u.Id == userId);
-            IEnumerable<UserModel> enumerableUsers = filteredUsers.ToList();
-            return enumerableUsers.FirstOrDefault();
-        }
-
-        private static List<UserModel> DeserializeUsersFromDatabase()
-        {
-            string initializeJson = File.ReadAllText(data);
-            return JsonConvert.DeserializeObject<List<UserModel>>(initializeJson);
-        }
+        }*/
     }
 }
