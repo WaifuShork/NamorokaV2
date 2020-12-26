@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Discord;
@@ -9,10 +10,6 @@ using Discord.Commands;
 using Victoria;
 using Victoria.Enums;
 using Victoria.EventArgs;
-
-// TODO: Fix queueing of songs from either YouTube or other various sources. Make sure string doesn't return char array from Victoria's search query. 
-
-// TODO: Add queue command (printing queues)
 
 // Bot restarts nuke the validation of being in a voice channel. 
 // Not entirely sure how to fix this 
@@ -32,11 +29,31 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
             _queueList = new List<LavaTrack>();
             _disconnectTokens = new ConcurrentDictionary<ulong, CancellationToken>();
         }
+        
+        // TODO: Double check if this works
+        [Command("queue")]
+        [Summary("prints the full queue that is currently active")]
+        [Remarks("-queue")]
+        public async Task PrintQueueAsync() => await PrintQueueAsync(_lavaNode.GetPlayer(Context.Guild));
+        
+        [Command("skip")]
+        [Summary("Skips the current track")]
+        [Remarks("-skip")]
+        public async Task SkipCurrentTrackAsync() => await SkipTrackAsync(_lavaNode.GetPlayer(Context.Guild));
+        
+        // Will do for now 
+        [Command("leave")]
+        public async Task LeaveAsync() => await LeaveAsync(_lavaNode);
 
         [Command("play")]
         [Summary("Plays a song with a link or song name")]
         [Remarks("-play <song name/link>")]
-        public async Task PlayAsync([Remainder] string searchQuery)
+        public async Task PlayAsync([Remainder] string searchQuery) => await PlaySongAsync(searchQuery);
+
+        
+        // ---------------------------- Audio Module Helpers ----------------------------
+        
+        private async Task PlaySongAsync(string searchQuery)
         {
             if (string.IsNullOrWhiteSpace(searchQuery))
             {
@@ -77,20 +94,12 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
                 await ReplyAsync(exception.Message);
             }
         }
-
-
-        [Command("skip")]
-        [Summary("Skips the current track")]
-        [Remarks("-skip")]
-        public async Task SkipCurrentTrackAsync() => await SkipTrackAsync(_lavaNode.GetPlayer(Context.Guild));
+        
         private static async Task SkipTrackAsync(LavaPlayer track) => await track.SkipAsync();
-
-
-        // Will do for now 
-        [Command("leave")]
-        public async Task LeaveAsync()
+        
+        private async Task LeaveAsync(LavaNode lavaNode)
         {
-            if (!_lavaNode.HasPlayer(Context.Guild))
+            if (!lavaNode.HasPlayer(Context.Guild))
             {
                 await ReplyAsync("I'm not connected to a voice channel.");
                 return;
@@ -99,12 +108,26 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
             {
                 if (Context.User is IVoiceState voiceState)
                 {
-                    await _lavaNode.LeaveAsync(voiceState.VoiceChannel);
+                    await lavaNode.LeaveAsync(voiceState.VoiceChannel);
                 }   
             }
         }
 
-        // ---------------------------- Audio Module Helpers ----------------------------
+        
+        private async Task PrintQueueAsync(LavaPlayer player)
+        {
+            var stringBuilder = new StringBuilder();
+            foreach (var item in player.Queue)
+            {
+                stringBuilder.AppendLine($"{item.Author} :: {item.Title} :: {item.Duration}" );
+            }
+            
+            var builder = new EmbedBuilder()
+                .AddField("------ Tracks ------\n",stringBuilder.ToString());
+            var embed = builder.Build();
+            
+            await ReplyAsync(embed: embed);
+        }
         
         private void RemoveDuplicates(LavaPlayer player)
         {
