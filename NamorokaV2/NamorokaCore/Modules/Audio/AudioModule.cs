@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
@@ -6,44 +11,64 @@ using Victoria;
 using Victoria.Enums;
 using Victoria.EventArgs;
 
-// TODO: Fix queueing of songs from either YouTube or other various sources. Make sure string doesn't return char array from Victoria's search query. 
+// Bot restarts nuke the validation of being in a voice channel. 
+// Not entirely sure how to fix this 
 
 namespace NamorokaV2.NamorokaCore.Modules.Audio
 {
+    [RequireContext(ContextType.Guild)]
     public sealed class AudioModule : ModuleBase<SocketCommandContext>
     {
+        private readonly List<LavaTrack> _queueList;
         private readonly LavaNode _lavaNode;
+        private readonly ConcurrentDictionary<ulong, CancellationToken> _disconnectTokens;
 
         public AudioModule(LavaNode lavaNode)
         {
             _lavaNode = lavaNode;
-        }
-
-        private static async Task OnTrackEnded(TrackEndedEventArgs args)
-        {
-            if (!args.Reason.ShouldPlayNext())
-                return;
-
-            var player = args.Player;
-            if (!player.Queue.TryDequeue(out var queueable))
-            {
-                await player.TextChannel.SendMessageAsync("Queue completed! Please add more tracks to rock n' roll!");
-                return;
-            }
-
-            if (!(queueable is { } track))
-            {
-                await player.TextChannel.SendMessageAsync("Next item in the queue is not a track.");
-                return;
-            }
-
-            await args.Player.PlayAsync(track);
-            await args.Player.TextChannel.SendMessageAsync($"{args.Reason}: {args.Track.Title}\nNow playing: {track.Title}");
+            _queueList = new List<LavaTrack>();
+            _disconnectTokens = new ConcurrentDictionary<ulong, CancellationToken>();
         }
         
+        // TODO: Double check if this works
+        [Command("queue")]
+        [Summary("prints the full queue that is currently active")]
+        [Remarks("-queue")]
+        public async Task PrintQueueAsync() => await PrintQueueAsync(_lavaNode.GetPlayer(Context.Guild));
+        
+        [Command("skip")]
+        [Summary("Skips the current track")]
+        [Remarks("-skip")]
+        public async Task SkipCurrentTrackAsync() => await SkipTrackAsync(_lavaNode.GetPlayer(Context.Guild));
+        
+        // Will do for now 
+        [Command("leave")]
+        public async Task LeaveAsync() => await LeaveAsync(_lavaNode);
 
-        [Command("join")]
-        public async Task JoinAsync()
+        [Command("play")]
+        [Summary("Plays a song with a link or song name")]
+        [Remarks("-play <song name/link>")]
+        public async Task PlayAsync([Remainder] string searchQuery) => await PlaySongAsync(searchQuery);
+
+        
+        // ---------------------------- Audio Module Helpers ----------------------------
+        
+        private async Task PlaySongAsync(string searchQuery)
+        {
+            if (string.IsNullOrWhiteSpace(searchQuery))
+            {
+                await ReplyAsync("Please provide search terms.");
+                return;
+            }
+
+            if (!_lavaNode.HasPlayer(Context.Guild))
+            {
+                await JoinAsync();
+                await QueryAndPlayAsync(searchQuery);
+            }
+        }
+
+        private async Task JoinAsync()
         {
             if (_lavaNode.HasPlayer(Context.Guild))
             {
@@ -69,58 +94,69 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
                 await ReplyAsync(exception.Message);
             }
         }
-
-        [Command("skip")]
-        public async Task SkipAsync()
+        
+        private static async Task SkipTrackAsync(LavaPlayer track) => await track.SkipAsync();
+        
+        private async Task LeaveAsync(LavaNode lavaNode)
         {
-            var player = _lavaNode.Players;
-            foreach (var track in player)
-            {
-                await track.SkipAsync();
-                await ReplyAsync($"Skipped {track}");
-                return;
-            }
-        }
-
-        [Command("leave")]
-        public async Task LeaveAsync()
-        {
-            if (!_lavaNode.HasPlayer(Context.Guild))
+            if (!lavaNode.HasPlayer(Context.Guild))
             {
                 await ReplyAsync("I'm not connected to a voice channel.");
                 return;
             }
-            
-            if (Context.User is IVoiceState voiceState)
+            else
             {
-                await _lavaNode.LeaveAsync(voiceState.VoiceChannel);
+                if (Context.User is IVoiceState voiceState)
+                {
+                    await lavaNode.LeaveAsync(voiceState.VoiceChannel);
+                }   
             }
+        }
+
+        
+        private async Task PrintQueueAsync(LavaPlayer player)
+        {
+            var stringBuilder = new StringBuilder();
+            foreach (var item in player.Queue)
+            {
+                stringBuilder.AppendLine($"{item.Author} :: {item.Title} :: {item.Duration}" );
+            }
+            
+            var builder = new EmbedBuilder()
+                .AddField("------ Tracks ------\n",stringBuilder.ToString());
+            var embed = builder.Build();
+            
+            await ReplyAsync(embed: embed);
         }
         
-        [Command("play")]
-        public async Task PlayAsync([Remainder] string searchQuery)
+        private void RemoveDuplicates(LavaPlayer player)
         {
-            if (string.IsNullOrWhiteSpace(searchQuery))
+            foreach (var t in player.Queue)
             {
-                await ReplyAsync("Please provide search terms.");
-                return;
-            }
-            
-            if (!_lavaNode.HasPlayer(Context.Guild))
-            {
-                await ReplyAsync("I'm not connected to a voice channel.");
-                return;
+                _queueList.Add(t);
             }
 
+            var lavaList = _queueList.Distinct().ToList();
+            player.Queue.Clear();
+            foreach (var t in lavaList)
+            {
+                player.Queue.Enqueue(t);
+            }
+
+            // Refresh queue list for next search
+            _queueList.Clear();
+        }
+        
+        private async Task QueryAndPlayAsync(string searchQuery)
+        {
             var queries = searchQuery.Split(' ');
             foreach (var query in queries)
             {
                 var searchResponse = await _lavaNode.SearchAsync(query);
-                //var searchResponse = await _lavaNode.SearchYouTubeAsync(searchQuery);
-                Console.WriteLine(searchQuery);
+
+                // TODO: Make sure duplicates are nuked :: It should be working now but just keep an eye
                 if (searchResponse.LoadStatus == LoadStatus.LoadFailed || searchResponse.LoadStatus == LoadStatus.NoMatches)
                 {
-                    //await ReplyAsync($"I wasn't able to find anything for `{searchQuery}`.");
                     searchResponse = await _lavaNode.SearchYouTubeAsync(searchQuery);
                     if (searchResponse.LoadStatus == LoadStatus.LoadFailed || searchResponse.LoadStatus == LoadStatus.NoMatches)
                         return;
@@ -135,6 +171,7 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
                         {
                             player.Queue.Enqueue(track);
                         }
+                        RemoveDuplicates(player);
 
                         await ReplyAsync($"Enqueued {searchResponse.Tracks.Count} tracks.");
                     }
@@ -142,6 +179,9 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
                     {
                         var track = searchResponse.Tracks[0];
                         player.Queue.Enqueue(track);
+                        // TODO : Test later 
+                        RemoveDuplicates(player);
+                        
                         await ReplyAsync($"Enqueued: {track.Title}");
                     }
                 }
@@ -161,6 +201,7 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
                             else
                             {
                                 player.Queue.Enqueue(searchResponse.Tracks[i]);
+                                RemoveDuplicates(player);
                             }
                         }
 
@@ -173,6 +214,33 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
                     }
                 }
             }
+            return;
+        }
+        
+        
+        // ---------------------------- Victoria Event Handlers ----------------------------
+        
+        // TODO: Does this work? 
+        private async Task OnTrackEnded(TrackEndedEventArgs args)
+        {
+            if (!args.Reason.ShouldPlayNext())
+                return;
+
+            var player = args.Player;
+            if (!player.Queue.TryDequeue(out var queueable))
+            {
+                await player.TextChannel.SendMessageAsync("Queue completed! Please add more tracks to rock n' roll!");
+                return;
+            }
+
+            if (!(queueable is { } track))
+            {
+                await player.TextChannel.SendMessageAsync("Next item in the queue is not a track.");
+                return;
+            }
+
+            await args.Player.PlayAsync(track);
+            await args.Player.TextChannel.SendMessageAsync($"{args.Reason}: {args.Track.Title}\nNow playing: {track.Title}");
         }
     }
 }
