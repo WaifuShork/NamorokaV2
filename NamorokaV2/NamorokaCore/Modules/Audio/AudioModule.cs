@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
+using NamorokaV2.NamorokaCore.Services;
 using Victoria;
 using Victoria.Enums;
 using Victoria.EventArgs;
@@ -19,31 +20,27 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
     [RequireContext(ContextType.Guild)]
     public sealed class AudioModule : ModuleBase<SocketCommandContext>
     {
-        private readonly List<LavaTrack> _queueList;
-        private readonly LavaNode _lavaNode;
-        private readonly ConcurrentDictionary<ulong, CancellationToken> _disconnectTokens;
-
-        public AudioModule(LavaNode lavaNode)
+        private readonly AudioService _audioService;
+        
+        public AudioModule(LavaNode lavaNode, List<LavaTrack> lavaQueue, ConcurrentDictionary<ulong, CancellationToken> disconnectTokens)
         {
-            _lavaNode = lavaNode;
-            _queueList = new List<LavaTrack>();
-            _disconnectTokens = new ConcurrentDictionary<ulong, CancellationToken>();
+            _audioService = new AudioService(lavaNode, lavaQueue, disconnectTokens);
         }
         
         // TODO: Double check if this works
         [Command("queue")]
         [Summary("prints the full queue that is currently active")]
         [Remarks("-queue")]
-        public async Task PrintQueueAsync() => await PrintQueueAsync(_lavaNode.GetPlayer(Context.Guild));
+        public async Task PrintQueueAsync() => await PrintQueueAsync(_audioService.LavaNode.GetPlayer(Context.Guild));
         
         [Command("skip")]
         [Summary("Skips the current track")]
         [Remarks("-skip")]
-        public async Task SkipCurrentTrackAsync() => await SkipTrackAsync(_lavaNode.GetPlayer(Context.Guild));
+        public async Task SkipCurrentTrackAsync() => await SkipTrackAsync(_audioService.LavaNode.GetPlayer(Context.Guild));
         
         // Will do for now 
         [Command("leave")]
-        public async Task LeaveAsync() => await LeaveAsync(_lavaNode);
+        public async Task LeaveAsync() => await LeaveAsync(_audioService.LavaNode);
 
         [Command("play")]
         [Summary("Plays a song with a link or song name")]
@@ -61,7 +58,7 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
                 return;
             }
 
-            if (!_lavaNode.HasPlayer(Context.Guild))
+            if (!_audioService.LavaNode.HasPlayer(Context.Guild))
             {
                 await JoinAsync();
                 await QueryAndPlayAsync(searchQuery);
@@ -70,7 +67,7 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
 
         private async Task JoinAsync()
         {
-            if (_lavaNode.HasPlayer(Context.Guild))
+            if (_audioService.LavaNode.HasPlayer(Context.Guild))
             {
                 await ReplyAsync("I'm already connected to a voice channel!");
                 return;
@@ -85,7 +82,7 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
 
             try
             {
-                await _lavaNode.JoinAsync(voiceState.VoiceChannel, Context.Channel as ITextChannel);
+                await _audioService.LavaNode.JoinAsync(voiceState.VoiceChannel, Context.Channel as ITextChannel);
 
                 await ReplyAsync($"Joined {voiceState.VoiceChannel.Name}");
             }
@@ -133,10 +130,10 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
         {
             foreach (var t in player.Queue)
             {
-                _queueList.Add(t);
+                _audioService.LavaQueue.Add(t);
             }
 
-            var lavaList = _queueList.Distinct().ToList();
+            var lavaList = _audioService.LavaQueue.Distinct().ToList();
             player.Queue.Clear();
             foreach (var t in lavaList)
             {
@@ -144,7 +141,7 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
             }
 
             // Refresh queue list for next search
-            _queueList.Clear();
+            _audioService.LavaQueue.Clear();
         }
         
         private async Task QueryAndPlayAsync(string searchQuery)
@@ -152,16 +149,16 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
             var queries = searchQuery.Split(' ');
             foreach (var query in queries)
             {
-                var searchResponse = await _lavaNode.SearchAsync(query);
+                var searchResponse = await _audioService.LavaNode.SearchAsync(query);
 
                 // TODO: Make sure duplicates are nuked :: It should be working now but just keep an eye
                 if (searchResponse.LoadStatus == LoadStatus.LoadFailed || searchResponse.LoadStatus == LoadStatus.NoMatches)
                 {
-                    searchResponse = await _lavaNode.SearchYouTubeAsync(searchQuery);
+                    searchResponse = await _audioService.LavaNode.SearchYouTubeAsync(searchQuery);
                     if (searchResponse.LoadStatus == LoadStatus.LoadFailed || searchResponse.LoadStatus == LoadStatus.NoMatches)
                         return;
                 }
-                var player = _lavaNode.GetPlayer(Context.Guild);
+                var player = _audioService.LavaNode.GetPlayer(Context.Guild);
 
                 if (player.PlayerState == PlayerState.Playing || player.PlayerState == PlayerState.Paused)
                 {

@@ -27,4 +27,4 @@ namespace NamorokaV2
         
         public IUserMessage Message { get; }
     }
-}
+} 

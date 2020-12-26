@@ -55,6 +55,7 @@ namespace NamorokaV2
                     DefaultRunMode = RunMode.Async,
                     CaseSensitiveCommands = false
                 }))
+                .AddSingleton<AudioService>()
                 .AddSingleton<CommandHandler>()
                 .AddSingleton<InteractiveService>()
                 .AddLavaNode(x =>
