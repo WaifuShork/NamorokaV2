@@ -7,7 +7,6 @@ namespace NamorokaV2
 {
     public class NamorokaContext : ICommandContext
     {
-        
         public NamorokaContext(SocketUserMessage msg, IServiceProvider provider)
         {
             Client = (IDiscordClient)provider.GetService(typeof(DiscordSocketClient));

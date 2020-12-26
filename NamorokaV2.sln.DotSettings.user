@@ -2,4 +2,5 @@
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
   &lt;Assembly Path="C:\Users\ashle\.nuget\packages\discord.net.rest\2.2.0\lib\netstandard2.1\Discord.Net.Rest.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Users\ashle\.nuget\packages\discord.addons.interactive\2.0.0\lib\netstandard2.0\Discord.Addons.Interactive.dll" /&gt;&#xD;
+  &lt;Assembly Path="G:\source\NamorokaV2\NamorokaV2\NamorokaContext\bin\Debug\net5.0\NamorokaContext.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>

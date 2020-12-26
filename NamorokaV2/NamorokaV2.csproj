@@ -32,8 +32,8 @@
 
     <ItemGroup>
         <None Remove="Database\NamorokaDB.db" />
-        <None Update="_config.yml">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <None Update="Sensitive\_config.yml">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
     </ItemGroup>
 
