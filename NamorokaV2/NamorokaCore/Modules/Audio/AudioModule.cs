@@ -12,11 +12,14 @@ using Victoria.EventArgs;
 
 // TODO: Fix queueing of songs from either YouTube or other various sources. Make sure string doesn't return char array from Victoria's search query. 
 
-// TODO: Refactor skip 
 // TODO: Add queue command (printing queues)
+
+// Bot restarts nuke the validation of being in a voice channel. 
+// Not entirely sure how to fix this 
 
 namespace NamorokaV2.NamorokaCore.Modules.Audio
 {
+    [RequireContext(ContextType.Guild)]
     public sealed class AudioModule : ModuleBase<SocketCommandContext>
     {
         private readonly List<LavaTrack> _queueList;
@@ -26,10 +29,13 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
         public AudioModule(LavaNode lavaNode)
         {
             _lavaNode = lavaNode;
+            _queueList = new List<LavaTrack>();
             _disconnectTokens = new ConcurrentDictionary<ulong, CancellationToken>();
         }
 
         [Command("play")]
+        [Summary("Plays a song with a link or song name")]
+        [Remarks("-play <song name/link>")]
         public async Task PlayAsync([Remainder] string searchQuery)
         {
             if (string.IsNullOrWhiteSpace(searchQuery))
@@ -45,6 +51,79 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
             }
         }
 
+        private async Task JoinAsync()
+        {
+            if (_lavaNode.HasPlayer(Context.Guild))
+            {
+                await ReplyAsync("I'm already connected to a voice channel!");
+                return;
+            }
+
+            var voiceState = Context.User as IVoiceState;
+            if (voiceState?.VoiceChannel == null)
+            {
+                await ReplyAsync("You must be connected to a voice channel!");
+                return;
+            }
+
+            try
+            {
+                await _lavaNode.JoinAsync(voiceState.VoiceChannel, Context.Channel as ITextChannel);
+
+                await ReplyAsync($"Joined {voiceState.VoiceChannel.Name}");
+            }
+            catch (Exception exception)
+            {
+                await ReplyAsync(exception.Message);
+            }
+        }
+
+
+        [Command("skip")]
+        [Summary("Skips the current track")]
+        [Remarks("-skip")]
+        public async Task SkipCurrentTrackAsync() => await SkipTrackAsync(_lavaNode.GetPlayer(Context.Guild));
+        private static async Task SkipTrackAsync(LavaPlayer track) => await track.SkipAsync();
+
+
+        // Will do for now 
+        [Command("leave")]
+        public async Task LeaveAsync()
+        {
+            if (!_lavaNode.HasPlayer(Context.Guild))
+            {
+                await ReplyAsync("I'm not connected to a voice channel.");
+                return;
+            }
+            else
+            {
+                if (Context.User is IVoiceState voiceState)
+                {
+                    await _lavaNode.LeaveAsync(voiceState.VoiceChannel);
+                }   
+            }
+        }
+
+        // ---------------------------- Audio Module Helpers ----------------------------
+        
+        private void RemoveDuplicates(LavaPlayer player)
+        {
+            foreach (var t in player.Queue)
+            {
+                _queueList.Add(t);
+            }
+
+            var lavaList = _queueList.Distinct().ToList();
+            player.Queue.Clear();
+            foreach (var t in lavaList)
+            {
+                player.Queue.Enqueue(t);
+            }
+
+            // Refresh queue list for next search
+            _queueList.Clear();
+        }
+        
         private async Task QueryAndPlayAsync(string searchQuery)
         {
             var queries = searchQuery.Split(' ');
@@ -113,79 +192,6 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
                 }
             }
             return;
-        }
-
-        private void RemoveDuplicates(LavaPlayer player)
-        {
-            foreach (var t in player.Queue)
-            {
-                _queueList.Add(t);
-            }
-
-            var lavaList = _queueList.Distinct().ToList();
-            player.Queue.Clear();
-            foreach (var t in lavaList)
-            {
-                player.Queue.Enqueue(t);
-            }
-
-            // Refresh queue list for next search
-            _queueList.Clear();
-        }
-        
-        // Combine with play
-        private async Task JoinAsync()
-        {
-            if (_lavaNode.HasPlayer(Context.Guild))
-            {
-                await ReplyAsync("I'm already connected to a voice channel!");
-                return;
-            }
-
-            var voiceState = Context.User as IVoiceState;
-            if (voiceState?.VoiceChannel == null)
-            {
-                await ReplyAsync("You must be connected to a voice channel!");
-                return;
-            }
-
-            try
-            {
-                await _lavaNode.JoinAsync(voiceState.VoiceChannel, Context.Channel as ITextChannel);
-
-                await ReplyAsync($"Joined {voiceState.VoiceChannel.Name}");
-            }
-            catch (Exception exception)
-            {
-                await ReplyAsync(exception.Message);
-            }
-        }
-
-        [Command("skip")]
-        public async Task SkipAsync()
-        {
-            var player = _lavaNode.Players;
-            foreach (var track in player)
-            {
-                await track.SkipAsync();
-                await ReplyAsync($"Skipped {track}");
-                return;
-            }
-        }
-
-        [Command("leave")]
-        public async Task LeaveAsync()
-        {
-            if (!_lavaNode.HasPlayer(Context.Guild))
-            {
-                await ReplyAsync("I'm not connected to a voice channel.");
-                return;
-            }
-            
-            if (Context.User is IVoiceState voiceState)
-            {
-                await _lavaNode.LeaveAsync(voiceState.VoiceChannel);
-            }
         }
         
         
