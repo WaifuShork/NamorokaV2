@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
+using NamorokaV2.Attributes;
+using NamorokaV2.Configuration;
+using NamorokaV2.NamorokaCore.Extensions;
 using Victoria;
 using Victoria.Enums;
 using Victoria.EventArgs;
 using Victoria.Responses.Rest;
-
-// TODO: Bot won't play any music lol
-// Bot restarts nuke the validation of being in a voice channel. 
-// Not entirely sure how to fix this 
 
 namespace NamorokaV2.NamorokaCore.Modules.Audio
 {
@@ -40,6 +38,7 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
         [Command("skip")]
         [Summary("Skips the current track")]
         [Remarks("-skip")]
+        [RequireUserPermission(GuildPermission.MoveMembers)]
         public async Task SkipCurrentTrackAsync() => await SkipTrackAsync(_lavaNode.GetPlayer(Context.Guild));
         
         // Will do for now 
@@ -64,6 +63,7 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
 
             await JoinAsync();
             await QueryAndPlayAsync(searchQuery);
+            await Context.DeleteAuthorMessage();
             if (!_lavaNode.HasPlayer(Context.Guild))
             {
                 await JoinAsync();
@@ -81,24 +81,36 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
             var voiceState = Context.User as IVoiceState;
             if (voiceState?.VoiceChannel == null)
             {
+                await Context.DeleteAuthorMessage();
                 await ReplyAsync("You must be connected to a voice channel!");
                 return;
             }
 
             try
             {
+                await Context.DeleteAuthorMessage();
                 await _lavaNode.JoinAsync(voiceState.VoiceChannel, Context.Channel as ITextChannel);
-
                 await ReplyAsync($"Joined {voiceState.VoiceChannel.Name}");
             }
             catch (Exception exception)
             {
+                await Context.DeleteAuthorMessage();
                 await ReplyAsync(exception.Message);
             }
         }
-        
-        private static async Task SkipTrackAsync(LavaPlayer track) => await track.SkipAsync();
-        
+
+        private async Task SkipTrackAsync(LavaPlayer track)
+        {
+            var player = _lavaNode.GetPlayer(Context.Guild).Track;
+            var skipped = $"{player.Author} :: {player.Title} :: {player.Duration}";
+            var builder = new EmbedBuilder()
+                .AddField("Skipped", skipped);
+            var embed = builder.Build();
+            await ReplyAsync(embed: embed);
+            await Context.DeleteAuthorMessage();
+            await track.SkipAsync();
+        }
+
         private async Task LeaveAsync(LavaNode lavaNode)
         {
             if (!lavaNode.HasPlayer(Context.Guild))
@@ -119,29 +131,27 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
         {
             var builder = new EmbedBuilder();
             var stringBuilder = new StringBuilder();
-            switch (player.Queue.Count)
+            if (player.Queue.Count >= 1)
             {
-                case > 1:
+                foreach (var item in player.Queue)
                 {
-                    foreach (var item in player.Queue)
-                    {
-                        stringBuilder.AppendLine($"{item.Author} :: {item.Title} :: {item.Duration}\n");
-                    }
+                    stringBuilder.AppendLine($"{item.Author} :: {item.Title} :: {item.Duration}\n");
+                }
 
-                    builder.AddField("------ Currently Playing ------\n", $"{player.Track.Author} :: {player.Track.Title} :: {player.Track.Duration}");
-                    builder.AddField("------ Tracks ------\n",stringBuilder.ToString());
-                    var buildEmbed = builder.Build();
-                    await ReplyAsync(embed: buildEmbed);
-                    break;
-                    
-                }
-                case 0:
-                {
-                    builder = new EmbedBuilder().AddField("------ Currently Playing ------\n", $"{player.Track.Author} :: {player.Track.Title} :: {player.Track.Duration}");
-                    var embed = builder.Build();
-                    await ReplyAsync(embed: embed);
-                    break;
-                }
+                builder.AddField("------ Currently Playing ------\n",
+                    $"{player.Track.Author} :: {player.Track.Title} :: {player.Track.Duration}");
+                builder.AddField("------ Tracks ------\n", stringBuilder.ToString());
+                var buildEmbed = builder.Build();
+                await Context.DeleteAuthorMessage();
+                await ReplyAsync(embed: buildEmbed);
+            }
+            else if (player.Queue.Count == 0)
+            {
+                builder = new EmbedBuilder().AddField("------ Currently Playing ------\n",
+                    $"{player.Track.Author} :: {player.Track.Title} :: {player.Track.Duration}");
+                var embed = builder.Build();
+                await Context.DeleteAuthorMessage();
+                await ReplyAsync(embed: embed);
             }
         }
         
@@ -243,7 +253,6 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
 
         // ---------------------------- Victoria Event Handlers ----------------------------
         
-        // TODO: Does this work? 
         private async Task OnTrackEnded(TrackEndedEventArgs args)
         {
             if (!args.Reason.ShouldPlayNext())

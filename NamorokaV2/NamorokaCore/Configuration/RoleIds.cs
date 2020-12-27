@@ -7,5 +7,7 @@
         internal const ulong Administrator = 436716988396601356;
 
         internal const ulong MakoShork = 442432782010941462;
+
+        internal const ulong DJ = 792669784781094953;
     }
 }
