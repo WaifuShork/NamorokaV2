@@ -20,7 +20,7 @@ namespace NamorokaV2
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
-                .AddYamlFile("_config.yml");
+                .AddYamlFile(@".\Sensitive\_config.yml");
             Configuration = builder.Build();
         }
         

@@ -10,7 +10,9 @@ using Discord.Commands;
 using Victoria;
 using Victoria.Enums;
 using Victoria.EventArgs;
+using Victoria.Responses.Rest;
 
+// TODO: Bot won't play any music lol
 // Bot restarts nuke the validation of being in a voice channel. 
 // Not entirely sure how to fix this 
 
@@ -30,7 +32,6 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
             _disconnectTokens = new ConcurrentDictionary<ulong, CancellationToken>();
         }
         
-        // TODO: Double check if this works
         [Command("queue")]
         [Summary("prints the full queue that is currently active")]
         [Remarks("-queue")]
@@ -46,10 +47,10 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
         public async Task LeaveAsync() => await LeaveAsync(_lavaNode);
 
         [Command("play")]
-        [Summary("Plays a song with a link or song name")]
-        [Remarks("-play <song name/link>")]
+        //[Summary("Plays a song with a link or song name")]
+        //[Remarks("-play <song name/link>")]
         public async Task PlayAsync([Remainder] string searchQuery) => await PlaySongAsync(searchQuery);
-
+        
         
         // ---------------------------- Audio Module Helpers ----------------------------
         
@@ -61,18 +62,19 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
                 return;
             }
 
+            await JoinAsync();
+            await QueryAndPlayAsync(searchQuery);
             if (!_lavaNode.HasPlayer(Context.Guild))
             {
                 await JoinAsync();
                 await QueryAndPlayAsync(searchQuery);
             }
         }
-
+        
         private async Task JoinAsync()
         {
             if (_lavaNode.HasPlayer(Context.Guild))
             {
-                await ReplyAsync("I'm already connected to a voice channel!");
                 return;
             }
 
@@ -113,111 +115,132 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
             }
         }
 
-        
         private async Task PrintQueueAsync(LavaPlayer player)
         {
+            var builder = new EmbedBuilder();
             var stringBuilder = new StringBuilder();
-            foreach (var item in player.Queue)
+            switch (player.Queue.Count)
             {
-                stringBuilder.AppendLine($"{item.Author} :: {item.Title} :: {item.Duration}" );
-            }
-            
-            var builder = new EmbedBuilder()
-                .AddField("------ Tracks ------\n",stringBuilder.ToString());
-            var embed = builder.Build();
-            
-            await ReplyAsync(embed: embed);
-        }
-        
-        private void RemoveDuplicates(LavaPlayer player)
-        {
-            foreach (var t in player.Queue)
-            {
-                _queueList.Add(t);
-            }
+                case > 1:
+                {
+                    foreach (var item in player.Queue)
+                    {
+                        stringBuilder.AppendLine($"{item.Author} :: {item.Title} :: {item.Duration}\n");
+                    }
 
-            var lavaList = _queueList.Distinct().ToList();
-            player.Queue.Clear();
-            foreach (var t in lavaList)
-            {
-                player.Queue.Enqueue(t);
+                    builder.AddField("------ Currently Playing ------\n", $"{player.Track.Author} :: {player.Track.Title} :: {player.Track.Duration}");
+                    builder.AddField("------ Tracks ------\n",stringBuilder.ToString());
+                    var buildEmbed = builder.Build();
+                    await ReplyAsync(embed: buildEmbed);
+                    break;
+                    
+                }
+                case 0:
+                {
+                    builder = new EmbedBuilder().AddField("------ Currently Playing ------\n", $"{player.Track.Author} :: {player.Track.Title} :: {player.Track.Duration}");
+                    var embed = builder.Build();
+                    await ReplyAsync(embed: embed);
+                    break;
+                }
             }
-
-            // Refresh queue list for next search
-            _queueList.Clear();
         }
         
         private async Task QueryAndPlayAsync(string searchQuery)
         {
             var queries = searchQuery.Split(' ');
-            foreach (var query in queries)
+            SearchResponse searchResponse;
+            if (searchQuery.Contains('/') || searchQuery.Contains('?'))
             {
-                var searchResponse = await _lavaNode.SearchAsync(query);
+                foreach (var query in queries)
+                {
+                    searchResponse = await _lavaNode.SearchAsync(query);
 
-                // TODO: Make sure duplicates are nuked :: It should be working now but just keep an eye
+                    if (searchResponse.LoadStatus == LoadStatus.LoadFailed || searchResponse.LoadStatus == LoadStatus.NoMatches)
+                    {
+                        return;
+                    }
+                    var player = _lavaNode.GetPlayer(Context.Guild);
+
+                    if (player.PlayerState == PlayerState.Playing || player.PlayerState == PlayerState.Paused)
+                    {
+                        if (!string.IsNullOrWhiteSpace(searchResponse.Playlist.Name))
+                        {
+                            foreach (var track in searchResponse.Tracks)
+                            {
+                                player.Queue.Enqueue(track);
+                            }
+
+                            await ReplyAsync($"Enqueued {searchResponse.Tracks.Count} tracks.");
+                        }
+                        else
+                        {
+                            var track = searchResponse.Tracks[0];
+                            
+                            player.Queue.Enqueue(track);
+                            
+                            await ReplyAsync($"Enqueued: {track.Title}");
+                        }
+                    }
+                    else
+                    {
+                        var track = searchResponse.Tracks[0];
+
+                        if (!string.IsNullOrWhiteSpace(searchResponse.Playlist.Name))
+                        {
+                            for (var i = 0; i < searchResponse.Tracks.Count; i++)
+                            {
+                                if (i == 0)
+                                {
+                                    await player.PlayAsync(track);
+                                    await ReplyAsync($"Now Playing: {track.Title}");
+                                }
+                                else
+                                {
+                                    player.Queue.Enqueue(searchResponse.Tracks[i]);
+                                }
+                            }
+
+                            await ReplyAsync($"Enqueued {searchResponse.Tracks.Count} tracks.");
+                        }
+                        else
+                        {
+                            await player.PlayAsync(track);
+                            await ReplyAsync($"Now Playing: {track.Title}");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                searchResponse = await _lavaNode.SearchYouTubeAsync(searchQuery);
+
+                LavaTrack track;
                 if (searchResponse.LoadStatus == LoadStatus.LoadFailed || searchResponse.LoadStatus == LoadStatus.NoMatches)
                 {
-                    searchResponse = await _lavaNode.SearchYouTubeAsync(searchQuery);
-                    if (searchResponse.LoadStatus == LoadStatus.LoadFailed || searchResponse.LoadStatus == LoadStatus.NoMatches)
-                        return;
+                    return;
                 }
                 var player = _lavaNode.GetPlayer(Context.Guild);
 
                 if (player.PlayerState == PlayerState.Playing || player.PlayerState == PlayerState.Paused)
                 {
-                    if (!string.IsNullOrWhiteSpace(searchResponse.Playlist.Name))
-                    {
-                        foreach (var track in searchResponse.Tracks)
-                        {
-                            player.Queue.Enqueue(track);
-                        }
-                        RemoveDuplicates(player);
-
-                        await ReplyAsync($"Enqueued {searchResponse.Tracks.Count} tracks.");
-                    }
-                    else
-                    {
-                        var track = searchResponse.Tracks[0];
-                        player.Queue.Enqueue(track);
-                        // TODO : Test later 
-                        RemoveDuplicates(player);
+                    track = searchResponse.Tracks[0];
                         
-                        await ReplyAsync($"Enqueued: {track.Title}");
-                    }
+                    player.Queue.Enqueue(track);
+                    
+                    await ReplyAsync($"Enqueued: {track.Title}");
                 }
                 else
                 {
-                    var track = searchResponse.Tracks[0];
-
-                    if (!string.IsNullOrWhiteSpace(searchResponse.Playlist.Name))
-                    {
-                        for (var i = 0; i < searchResponse.Tracks.Count; i++)
-                        {
-                            if (i == 0)
-                            {
-                                await player.PlayAsync(track);
-                                await ReplyAsync($"Now Playing: {track.Title}");
-                            }
-                            else
-                            {
-                                player.Queue.Enqueue(searchResponse.Tracks[i]);
-                                RemoveDuplicates(player);
-                            }
-                        }
-
-                        await ReplyAsync($"Enqueued {searchResponse.Tracks.Count} tracks.");
-                    }
-                    else
-                    {
-                        await player.PlayAsync(track);
-                        await ReplyAsync($"Now Playing: {track.Title}");
-                    }
+                    track = searchResponse.Tracks[0];
+                    await player.PlayAsync(track);
+                    await ReplyAsync($"Now Playing: {track.Title}");
                 }
             }
+
             return;
         }
-        
-        
+
+
         // ---------------------------- Victoria Event Handlers ----------------------------
         
         // TODO: Does this work? 

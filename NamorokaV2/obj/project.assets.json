@@ -990,7 +990,7 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
-      "Newtonsoft.Json/12.0.3": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -2684,21 +2684,6 @@
         "runtime": {
           "lib/netstandard2.1/YamlDotNet.dll": {}
         }
-      },
-      "NamorokaContext/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "5.0.0",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.0",
-          "Newtonsoft.Json": "12.0.3"
-        },
-        "compile": {
-          "bin/placeholder/NamorokaContext.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/NamorokaContext.dll": {}
-        }
       }
     }
   },
@@ -4104,10 +4089,10 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/12.0.3": {
-      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+    "Newtonsoft.Json/12.0.2": {
+      "sha512": "rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
       "type": "package",
-      "path": "newtonsoft.json/12.0.3",
+      "path": "newtonsoft.json/12.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4130,9 +4115,8 @@
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.12.0.3.nupkg.sha512",
-        "newtonsoft.json.nuspec",
-        "packageIcon.png"
+        "newtonsoft.json.12.0.2.nupkg.sha512",
+        "newtonsoft.json.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -8668,11 +8652,6 @@
         "yamldotnet.9.1.0.nupkg.sha512",
         "yamldotnet.nuspec"
       ]
-    },
-    "NamorokaContext/1.0.0": {
-      "type": "project",
-      "path": "../NamorokaContext/NamorokaContext.csproj",
-      "msbuildProject": "../NamorokaContext/NamorokaContext.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -8690,7 +8669,6 @@
       "Microsoft.Extensions.Hosting >= 5.0.0",
       "Microsoft.Extensions.Logging >= 5.0.0",
       "MongoDB.Driver >= 2.12.0-beta1",
-      "NamorokaContext >= 1.0.0",
       "NetEscapades.Configuration.Yaml >= 2.1.0",
       "System.Configuration.ConfigurationManager >= 5.0.0",
       "System.Data.SqlClient >= 4.8.2",
@@ -8730,11 +8708,7 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {
-            "G:\\source\\NamorokaV2\\NamorokaV2\\NamorokaContext\\NamorokaContext.csproj": {
-              "projectPath": "G:\\source\\NamorokaV2\\NamorokaV2\\NamorokaContext\\NamorokaContext.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

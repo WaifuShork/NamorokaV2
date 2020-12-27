@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5i2jij/y4AkwGq3n22kaZ3SYioNmS0cI8aU2RZmUldmtrojzu92U96dBSwfj3D02wOQbL9K6JMctCtd+6FgIuA==",
+  "dgSpecHash": "+eOWd2uH3WeGDwu4VXWEXvOgbwUT6dVsps0c61l4YcpV6GyYiceJs4443l9FKbQr6Ohl8ngGMyAmhGygdwoZ+A==",
   "success": true,
   "projectFilePath": "G:\\source\\NamorokaV2\\NamorokaV2\\NamorokaV2\\NamorokaV2.csproj",
   "expectedPackageFiles": [
@@ -69,7 +69,7 @@
     "C:\\Users\\ashle\\.nuget\\packages\\mongodb.libmongocrypt\\1.1.0-beta02\\mongodb.libmongocrypt.1.1.0-beta02.nupkg.sha512",
     "C:\\Users\\ashle\\.nuget\\packages\\netescapades.configuration.yaml\\2.1.0\\netescapades.configuration.yaml.2.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\ashle\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\ashle\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

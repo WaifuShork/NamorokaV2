@@ -11,7 +11,7 @@ namespace NamorokaV2.NamorokaCore.Services
     public static class DatabaseService
     {
         private static readonly List<UserModel> _users = DeserializeUsersFromDatabase();
-        private const string data = @"..\..\..\database.json";
+        private const string data = @"G:\source\NamorokaV2\NamorokaV2\NamorokaV2\Sensitive\database.json"; // @"..\..\..\database.json";
         
         private static async Task SerializeUserToDatabaseAsync(List<UserModel> users)
         {
