@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
+using Microsoft.Extensions.Logging;
 using NamorokaV2.Attributes;
 using NamorokaV2.Configuration;
 using NamorokaV2.NamorokaCore.Extensions;
@@ -21,35 +23,42 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
     {
         private readonly List<LavaTrack> _queueList;
         private readonly LavaNode _lavaNode;
-        private readonly ConcurrentDictionary<ulong, CancellationToken> _disconnectTokens;
+        private readonly ConcurrentDictionary<ulong, CancellationTokenSource> _disconnectTokens;
+        private static IEnumerable<int> Range = Enumerable.Range(1900, 2000);
+        
+        private readonly ILoggerFactory _loggerFactory; 
         
         public AudioModule(LavaNode lavaNode)
         {
             _lavaNode = lavaNode;
             _queueList = new List<LavaTrack>();
-            _disconnectTokens = new ConcurrentDictionary<ulong, CancellationToken>();
+            _disconnectTokens = new ConcurrentDictionary<ulong, CancellationTokenSource>();
         }
         
         [Command("queue")]
-        [Summary("prints the full queue that is currently active")]
+        [Summary("Prints the full queue that is currently active.")]
         [Remarks("-queue")]
         public async Task PrintQueueAsync() => await PrintQueueAsync(_lavaNode.GetPlayer(Context.Guild));
         
         [Command("skip")]
-        [Summary("Skips the current track")]
+        [Summary("Skips the current track.")]
         [Remarks("-skip")]
-        [RequireUserPermission(GuildPermission.MoveMembers)]
+        // TODO: Fix permissions
         public async Task SkipCurrentTrackAsync() => await SkipTrackAsync(_lavaNode.GetPlayer(Context.Guild));
         
-        // Will do for now 
         [Command("leave")]
+        [Summary("Disconnects bot from current Voice Channel the user that executed the command is in.")]
         public async Task LeaveAsync() => await LeaveAsync(_lavaNode);
 
         [Command("play")]
-        //[Summary("Plays a song with a link or song name")]
-        //[Remarks("-play <song name/link>")]
+        [Summary("Plays a song with a link or song name.")]
+        [Remarks("-play <song name/link>")]
         public async Task PlayAsync([Remainder] string searchQuery) => await PlaySongAsync(searchQuery);
-        
+
+        [Command("lyrics")]
+        [Summary("Fetches lyrics from Genius")]
+        [Remarks("-lyrics")]
+        public async Task FetchLyricsAsync() => await ShowGeniusLyricsHelperAsync();
         
         // ---------------------------- Audio Module Helpers ----------------------------
         
@@ -62,12 +71,12 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
             }
 
             await JoinAsync();
-            await QueryAndPlayAsync(searchQuery);
+            await QueryAndPlayHelperAsync(searchQuery);
             await Context.DeleteAuthorMessage();
             if (!_lavaNode.HasPlayer(Context.Guild))
             {
                 await JoinAsync();
-                await QueryAndPlayAsync(searchQuery);
+                await QueryAndPlayHelperAsync(searchQuery);
             }
         }
         
@@ -155,7 +164,7 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
             }
         }
         
-        private async Task QueryAndPlayAsync(string searchQuery)
+        private async Task QueryAndPlayHelperAsync(string searchQuery)
         {
             var queries = searchQuery.Split(' ');
             SearchResponse searchResponse;
@@ -246,10 +255,71 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
                     await ReplyAsync($"Now Playing: {track.Title}");
                 }
             }
-
             return;
         }
+        public async Task ShowGeniusLyricsHelperAsync()
+        {
+            if (!_lavaNode.TryGetPlayer(Context.Guild, out var player))
+            {
+                await ReplyAsync("I'm not connected to a voice channel.");
+                return;
+            }
 
+            if (player.PlayerState != PlayerState.Playing)
+            {
+                await ReplyAsync("Woaaah there, I'm not playing any tracks");
+                return;
+            }
+
+            var lyrics = await player.Track.FetchLyricsFromGeniusAsync();
+            if (string.IsNullOrWhiteSpace(lyrics))
+            {
+                await ReplyAsync($"No lyrics found for {player.Track.Title}");
+                return;
+            }
+
+            var splitLyrics = lyrics.Split('\n');
+            var stringBuilder = new StringBuilder();
+            foreach (var line in splitLyrics)
+            {
+                if (Range.Contains(stringBuilder.Length))
+                {
+                    await ReplyAsync($"```{stringBuilder}```");
+                    stringBuilder.Clear();
+                }
+                else
+                {
+                    stringBuilder.AppendLine(line);
+                }
+            }
+            await ReplyAsync($"```{stringBuilder}```");
+        }
+        
+        // ---------------------------- Victoria Event Helpers ----------------------------
+
+        private async Task InitiateDisconnectAsync(LavaPlayer player, TimeSpan timeSpan)
+        {
+            if (!_disconnectTokens.TryGetValue(player.VoiceChannel.Id, out var value))
+            {
+                value = new CancellationTokenSource();
+                _disconnectTokens.TryAdd(player.VoiceChannel.Id, value);
+            }
+            else if (value.IsCancellationRequested)
+            {
+                _disconnectTokens.TryUpdate(player.VoiceChannel.Id, new CancellationTokenSource(), value);
+                value = _disconnectTokens[player.VoiceChannel.Id];
+            }
+
+            await player.TextChannel.SendMessageAsync($"Auto disconnect initiated, Disconnecting in: {timeSpan}...");
+            
+            var isCancelled = SpinWait.SpinUntil(() => value.IsCancellationRequested, timeSpan);
+
+            if (isCancelled)
+                return;
+
+            await _lavaNode.LeaveAsync(player.VoiceChannel);
+            await player.TextChannel.SendMessageAsync("Lets do it again sometime.");
+        }
 
         // ---------------------------- Victoria Event Handlers ----------------------------
         
@@ -262,6 +332,7 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
             if (!player.Queue.TryDequeue(out var queueable))
             {
                 await player.TextChannel.SendMessageAsync("Queue completed! Please add more tracks to rock n' roll!");
+                _ = InitiateDisconnectAsync(args.Player, TimeSpan.FromSeconds(10));
                 return;
             }
 
@@ -274,5 +345,21 @@ namespace NamorokaV2.NamorokaCore.Modules.Audio
             await args.Player.PlayAsync(track);
             await args.Player.TextChannel.SendMessageAsync($"{args.Reason}: {args.Track.Title}\nNow playing: {track.Title}");
         }
+
+        private async Task OnTrackStarted(TrackStartEventArgs args)
+        {
+            if (!_disconnectTokens.TryGetValue(args.Player.VoiceChannel.Id, out var value))
+            {
+                
+            }
+
+            if (value.IsCancellationRequested)
+                return;
+            
+            value.Cancel();
+            await args.Player.TextChannel.SendMessageAsync("Auto disconnect has been cancelled!");
+        }
+        
+        
     }
 }

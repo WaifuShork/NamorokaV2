@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Discord;
+using Discord.Commands;
 using NamorokaV2.Configuration;
 using NamorokaV2.NamorokaCore.Services;
 
@@ -21,6 +22,12 @@ namespace NamorokaV2.NamorokaCore.Extensions
             const ulong logChannelId = ChannelIds.LogChannelId;
             var channel = CommandHandler._client.GetGuild(guildId).GetTextChannel(logChannelId);
             await channel.SendMessageAsync(msg);
+        }
+        
+        public static async Task DeleteAuthorMessage(this ICommandContext context)
+        {
+            var message = context.Message;
+            await context.Channel.DeleteMessageAsync(message);
         }
     }
 }
