@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using NamorokaV2.Configuration;
+using NamorokaV2.NamorokaCore.Extensions;
 using NamorokaV2.NamorokaCore.Services;
 
 namespace NamorokaV2.NamorokaCore.Modules.UtilityModules
@@ -22,11 +23,8 @@ namespace NamorokaV2.NamorokaCore.Modules.UtilityModules
         [Command("help")]
         public async Task HelpAsync()
         {
-            SocketUserMessage message = Context.Message;
-            await Context.Channel.DeleteMessageAsync(message);
-            ConfigJson configJson = await JsonService.GetConfigJson(JsonService._configJson);
-            //string prefix = configJson.Prefix;
-            string prefix = _config["prefix"];
+            await Context.DeleteAuthorMessage();
+            var prefix = _config["prefix"];
             EmbedBuilder builder = new EmbedBuilder()
             {
                 Color = new Color(114, 137, 218),
@@ -62,8 +60,7 @@ namespace NamorokaV2.NamorokaCore.Modules.UtilityModules
         {
             SearchResult result = _service.Search(Context, command);
 
-            SocketUserMessage message = Context.Message;
-            await Context.Channel.DeleteMessageAsync(message);
+            await Context.DeleteAuthorMessage();
             if (!result.IsSuccess)
             {
                 await ReplyAsync($"Sorry, I couldn't find a command like **{command}**.");
